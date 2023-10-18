@@ -1,4 +1,4 @@
-package com.project.online_book_store;
+package com.project.online_book_store.app.domain.entity;
 
 import java.util.Date;
 
