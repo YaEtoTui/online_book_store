@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="step_buyStep" author="SazhinEA" context="store">
+
+        <createSequence sequenceName="hibernate_sequence" startValue="1" incrementBy="1"/>
+
+        <createTable tableName="step">
+
+            <column name="id" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="name_step" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+        <createTable tableName="buy_step">
+
+            <column name="id" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="buy_id" type="bigint">
+                <constraints foreignKeyName="buy_step_buy_fk"
+                             referencedTableName="buy"
+                             referencedColumnNames="id"/>
+            </column>
+
+            <column name="step_id" type="bigint">
+                <constraints foreignKeyName="buy_step_step_fk"
+                             referencedTableName="step"
+                             referencedColumnNames="id"/>
+            </column>
+
+        </createTable>
+
+    </changeSet>
+
+</databaseChangeLog>

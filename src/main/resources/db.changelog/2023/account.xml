@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="account" author="SazhinEA" context="store">
+
+        <createSequence sequenceName="hibernate_sequence" startValue="1" incrementBy="1"/>
+
+        <createTable tableName="account">
+
+            <column name="id" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="username" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="password" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="role" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="fio" type="varchar">
+                <constraints nullable="true"/>
+            </column>
+
+        </createTable>
+
+    </changeSet>
+
+</databaseChangeLog>

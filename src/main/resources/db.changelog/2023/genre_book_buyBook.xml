@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                           http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+
+    <changeSet id="genre_book_buyBook" author="SazhinEA" context="store">
+
+
+        <createSequence sequenceName="hibernate_sequence" startValue="1" incrementBy="1"/>
+
+        <createTable tableName="genre">
+
+            <column name="id" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="name" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+        <createTable tableName="book">
+
+            <column name="id" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+
+
+            <column name="name" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+
+
+            <column name="page" type="int4">
+                <constraints nullable="false"/>
+            </column>
+
+
+            <column name="description" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+
+
+            <column name="language" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+
+
+            <column name="year_issue" type="int4">
+                <constraints nullable="false"/>
+            </column>
+
+
+            <column name="price" type="int4">
+                <constraints nullable="false"/>
+            </column>
+
+
+            <column name="count" type="int4">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="author_id" type="bigint">
+                <constraints foreignKeyName="book_author_fk"
+                             referencedTableName="author"
+                             referencedColumnNames="id"/>
+            </column>
+
+            <column name="genre_id" type="bigint">
+                <constraints foreignKeyName="book_genre_fk"
+                             referencedTableName="genre"
+                             referencedColumnNames="id"/>
+            </column>
+
+        </createTable>
+
+        <createTable tableName="buy_book">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="count" type="int4">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="buy_id" type="bigint">
+                <constraints foreignKeyName="buy_book_buy_fk"
+                             referencedTableName="buy"
+                             referencedColumnNames="id"/>
+            </column>
+
+            <column name="book_id" type="bigint">
+                <constraints foreignKeyName="buy_book_book_fk"
+                             referencedTableName="book"
+                             referencedColumnNames="id"/>
+            </column>
+
+        </createTable>
+
+
+    </changeSet>
+
+
+</databaseChangeLog>
