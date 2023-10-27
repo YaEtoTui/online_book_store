@@ -21,6 +21,11 @@
 
         </createTable>
 
+        <sql>
+            insert into author values (3, 'Pushkin'),
+                                    (4, 'Dostoevski')
+        </sql>
+
     </changeSet>
 
 </databaseChangeLog>

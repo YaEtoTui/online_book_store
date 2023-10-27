@@ -39,6 +39,13 @@
 
         </createTable>
 
+        <sql>
+            insert into client values (5, 'Egor', 'zachem@gmail.com'),
+                                      (6, 'Sacha', 'ctoeto@yandex.ru');
+            insert into buy values (7, 5),
+                                   (8, 6)
+        </sql>
+
     </changeSet>
 
 </databaseChangeLog>
