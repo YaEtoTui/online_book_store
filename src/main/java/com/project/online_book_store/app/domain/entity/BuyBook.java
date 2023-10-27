@@ -20,4 +20,5 @@ public class BuyBook extends BaseDomainEntity {
     @OneToOne()
     @JoinColumn(name = "book_id")
     Book book;
+
 }
