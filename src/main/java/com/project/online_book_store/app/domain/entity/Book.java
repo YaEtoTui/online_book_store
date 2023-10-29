@@ -15,13 +15,13 @@ import lombok.Setter;
 @AllArgsConstructor
 @Table(name = "book")
 public class Book extends BaseDomainEntity{
-    String name;
+    public String name;
     Integer page;
     String description;
     String language;
     Integer yearIssue;
     Integer price;
-    Integer count;
+    public Integer count;
     @ManyToOne()
     @JoinColumn(name = "author_id")
     Author author;
