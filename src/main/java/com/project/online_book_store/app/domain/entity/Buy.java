@@ -16,8 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "buy")
 public class Buy extends BaseDomainEntity {
-    @ManyToOne()
-    @JoinColumn(name = "client_id")
+    @OneToOne(mappedBy = "buy", fetch = FetchType.LAZY)
     Client client;
     @OneToMany(mappedBy = "buy", fetch = FetchType.LAZY)
     List<BuyBook> buyBook = new LinkedList<>();

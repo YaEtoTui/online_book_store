@@ -6,9 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.LinkedList;
-import java.util.List;
-
 @Entity
 @Getter
 @Setter
@@ -18,8 +15,9 @@ import java.util.List;
 public class Client extends BaseDomainEntity {
     String name;
     String email;
-    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
-    List<Buy> buyList = new LinkedList<>();
+    @OneToOne
+    @JoinColumn(name = "buy_id")
+    Buy buy;
     @OneToOne
     @JoinColumn(name = "cart_id")
     Cart cart;

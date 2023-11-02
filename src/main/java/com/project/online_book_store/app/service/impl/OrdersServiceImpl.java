@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -23,6 +24,7 @@ public class OrdersServiceImpl implements OrdersService {
     CartRepository cartRepository;
     BookRepository bookRepository;
     BooksInCartRepository booksInCartRepository;
+    BuyBookRepository buyBookRepository;
 
     @Override
     public void createOrder(Long cartId) {
@@ -30,15 +32,25 @@ public class OrdersServiceImpl implements OrdersService {
         Cart cart = cartRepository.getReferenceById(cartId);
         List<BookInCart> bookInCartList = cart.getBookInCartList();
 
+        List<BuyBook> buyBookList = new LinkedList<>();
+
         for(int i = 0; i < bookInCartList.size(); i++) {
             BookInCart bookInCart = bookInCartList.get(i);
             Book book = bookInCart.getBook();
             book.setCount(book.getCount() - 1);
 
+            BuyBook buyBook = new BuyBook(
+                    book.getName(),
+                    book.getPathImage(),
+                    cart.getClient().getBuy()
+            );
 
+            buyBookRepository.save(buyBook);
 
             bookRepository.save(book);
             booksInCartRepository.delete(bookInCart);
         }
+
+
     }
 }
