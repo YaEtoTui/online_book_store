@@ -2,6 +2,7 @@ package com.project.online_book_store.web.controller;
 
 import com.project.online_book_store.app.common.exception.NotFoundBookException;
 import com.project.online_book_store.app.domain.entity.Book;
+import com.project.online_book_store.app.domain.entity.dto.CreateRequestBook;
 import com.project.online_book_store.app.domain.entity.dto.response.BookResponse;
 import com.project.online_book_store.app.repository.BookRepository;
 import com.project.online_book_store.app.service.AdminService;
@@ -45,5 +46,11 @@ public class AdminController {
         return ResponseEntity.ok()
                 .contentType(MediaType.IMAGE_JPEG)
                 .body(new UrlResource(path.toUri()));
+    }
+
+    @PostMapping("/books/book")
+    public ResponseEntity<BookResponse> addNewBook(@RequestBody CreateRequestBook createRequestBook) {
+        return ResponseEntity.ok()
+                .body(adminService.addNewBook(createRequestBook));
     }
 }

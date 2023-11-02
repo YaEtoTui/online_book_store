@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Cart</title>
-    <meta name="description" content="Заказы">
+    <meta name="description" content="Подробности заказа">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <link rel="preload" href="/assets/fonts/Montserrat/Montserrat-SemiBold.woff2" as="font" crossorigin="anonymous">
@@ -21,17 +21,30 @@
 <div class="Middle">
     <div class="wrap">
         <main class="Middle-main">
-            <h1 class="Middle-title">Заказы
+            <h1 class="Middle-title">Заказ
             </h1>
             <div class="form Cart">
-                <div>
-                    <span>Заказ: </span><span th:text="${buyId}"></span>
+                <div class="Cart-product" th:each="book : ${listBuy}">
+                    <div class="Cart-block Cart-block_row">
+                        <div class="Cart-block Cart-block_pict"><a class="Cart-pict" href="#"><img class="Cart-img" th:src="@{/admin/image/{id}(id=${bookInCart.getBook().getId()})}" src="/assets/img/content/main/card.jpg" alt="card.jpg"/></a>
+                        </div>
+                        <div class="Cart-block Cart-block_row">
+                            <div class="Cart-block Cart-block_info">
+                                <div class="Cart-author"><a href="#" th:text="${book.getBook().getAuthor().getNameAuthor()}"/>
+                                </div>
+                                <div class="Cart-title"><a href="#" th:text="${book.getBook().getName()}"/>
+                                </div>
+                            </div>
+                            <div class="Cart-block Cart-block_price">
+                                <div class="Cart-priceTitle">Цена:
+                                </div>
+                                <div class="Cart-price"><span th:text="${book.getBook().getPrice()}"></span><span>р.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-<!--            <form class="form form_search" method="post" th:action="@{/api/orders/order/{id}(id=${buyId})}">-->
-<!--                <button type="submit">Поподробнее-->
-<!--                </button>-->
-<!--            </form>-->
         </main>
     </div>
 </div>

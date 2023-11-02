@@ -1,6 +1,7 @@
 package com.project.online_book_store.app.domain.entity;
 
 
+import com.project.online_book_store.app.domain.entity.context.BookContext;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -49,5 +50,19 @@ public class Book extends BaseDomainEntity{
         author = book.getAuthor();
         genre = book.getGenre();
         bookInCart = book.getBookInCart();
+    }
+
+    public Book(BookContext bookContext) {
+        name = bookContext.getName();
+        page = bookContext.getPage();
+        description = bookContext.getDescription();
+        language = bookContext.getLanguage();
+        yearIssue = bookContext.getYearIssue();
+        price = bookContext.getPrice();
+        count = bookContext.getCount();
+        pathImage = bookContext.toString();
+        author = bookContext.getAuthor();
+        genre = bookContext.getGenre();
+        bookInCart = new LinkedList<>();
     }
 }

@@ -21,7 +21,6 @@ public class BuyServiceImpl implements BuyService {
     @Override
     public Buy searchBuyByClient() {
         Client client = clientRepository.getReferenceById(5L);
-//        return client.
-        return null;
+        return client.getBuy();
     }
 }

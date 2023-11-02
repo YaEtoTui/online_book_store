@@ -1,10 +1,7 @@
 package com.project.online_book_store.app.service.impl;
 
 import com.project.online_book_store.app.domain.entity.*;
-import com.project.online_book_store.app.repository.BookRepository;
-import com.project.online_book_store.app.repository.BooksInCartRepository;
-import com.project.online_book_store.app.repository.BuyBookRepository;
-import com.project.online_book_store.app.repository.CartRepository;
+import com.project.online_book_store.app.repository.*;
 import com.project.online_book_store.app.service.OrdersService;
 import jakarta.transaction.Transactional;
 import lombok.AccessLevel;
@@ -32,7 +29,6 @@ public class OrdersServiceImpl implements OrdersService {
         Cart cart = cartRepository.getReferenceById(cartId);
         List<BookInCart> bookInCartList = cart.getBookInCartList();
 
-        List<BuyBook> buyBookList = new LinkedList<>();
 
         for(int i = 0; i < bookInCartList.size(); i++) {
             BookInCart bookInCart = bookInCartList.get(i);

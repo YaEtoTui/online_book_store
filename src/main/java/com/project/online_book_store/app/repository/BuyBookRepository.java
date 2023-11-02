@@ -12,4 +12,6 @@ public interface BuyBookRepository extends JpaRepository<BuyBook, Long> {
 
     List<BuyBook> findAllByBuy_Client(Client client);
     List<BuyBook> findAllByBuy_Client_Id(Long clientId);
+
+    List<BuyBook> findAllByBuy_Id(Long buyId);
 }
