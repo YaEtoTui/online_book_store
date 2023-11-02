@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.nio.file.Path;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class Book extends BaseDomainEntity{
     Integer yearIssue;
     Integer price;
     Integer count;
+    String pathImage;
     @ManyToOne()
     @JoinColumn(name = "author_id")
     Author author;
@@ -35,4 +37,20 @@ public class Book extends BaseDomainEntity{
     BuyBook buyBook;
     @OneToMany(mappedBy = "book", fetch = FetchType.LAZY)
     List<BookInCart> bookInCart = new LinkedList<>();
+
+    public Book(Book book, Path path) {
+        id = book.getId();
+        name = book.getName();
+        page = book.getPage();
+        description = book.getDescription();
+        language = book.getLanguage();
+        yearIssue = book.getYearIssue();
+        price = book.getPrice();
+        count = book.getCount();
+        pathImage = path.toString();
+        author = book.getAuthor();
+        genre = book.getGenre();
+        buyBook = book.getBuyBook();
+        bookInCart = book.getBookInCart();
+    }
 }

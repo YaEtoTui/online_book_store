@@ -10,6 +10,7 @@ public class BookResponse {
     Integer page;
     Integer price;
     Integer count;
+    String path;
     AuthorInfo author;
 
     @Value

@@ -76,6 +76,10 @@
                              referencedColumnNames="id"/>
             </column>
 
+            <column name="path_image" type="varchar">
+                <constraints nullable="true"/>
+            </column>
+
         </createTable>
 
         <createTable tableName="buy_book">
@@ -104,8 +108,8 @@
         <sql>
             insert into genre values (11, 'Стихотворение'),
                                      (12, 'Произведение');
-            insert into book values (9, 'Nanya', 1, 'Про няню...', 'Русский', 1826, 100, 1, 3, 11),
-                                    (10, 'Преступление и наказание', 485, 'Про разделении социума', 'Русский', 1866, 300, 20, 4, 12)
+            insert into book values (9, 'Nanya', 1, 'Про няню...', 'Русский', 1826, 100, 1, 3, 11, 'C:\Projects\Projects_Naumen\online_book_store\src\main\resources\images\imagehandler.jpg'),
+                                    (10, 'Преступление и наказание', 485, 'Про разделении социума', 'Русский', 1866, 300, 20, 4, 12, 'C:\\Projects\\Projects_Naumen\\online_book_store\\src\\main\\resources\\images\\Prestuplenie_i_nakazanie-cover3D-800-transp.png')
         </sql>
 
     </changeSet>

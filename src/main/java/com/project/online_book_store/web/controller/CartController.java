@@ -1,7 +1,6 @@
 package com.project.online_book_store.web.controller;
 
-import com.project.online_book_store.app.domain.entity.Book;
-import com.project.online_book_store.app.service.BuyBookService;
+import com.project.online_book_store.app.domain.entity.BookInCart;
 import com.project.online_book_store.app.service.CartService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 
 @Controller
 @RequestMapping("/api")
@@ -24,6 +22,13 @@ public class CartController {
     @GetMapping("/cart")
     public String getCartPage(Model model){
         model.addAttribute("listBooksInCart", cartService.showBooks());
+        model.addAttribute("countBooks", cartService.showBooks().size());
+        Integer price = 0;
+        List<BookInCart> list = cartService.showBooks();
+        for(int i = 0; i < list.size(); i++) {
+            price += list.get(i).getBook().getPrice();
+        }
+        model.addAttribute("priceTotal", price);
         return "cart";
     }
 
@@ -34,10 +39,10 @@ public class CartController {
         return "redirect:/api/";
     }
 
-    @PostMapping("/deleteBookInCart/{bookId}")
-    public String deleteBookInCart(@PathVariable Long bookId) {
-        System.out.println(bookId);
-        cartService.deleteBookInCart(bookId);
+    @PostMapping("/deleteBookInCart/{bookInCartId}")
+    public String deleteBookInCart(@PathVariable Long bookInCartId) {
+        System.out.println(bookInCartId);
+        cartService.deleteBookInCart(bookInCartId);
         System.out.println("Книга удалена");
         return "redirect:/api/cart";
     }

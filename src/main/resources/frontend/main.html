@@ -27,7 +27,7 @@
                 </div>
                 <div class="Cards Cards_refresh">
                     <div class="Card" th:each="book : ${listBooks}">
-                        <div class="Card-picture"><a href="#"><img src="/assets/img/content/main/card.jpg" alt="card.jpg"/></a>
+                        <div class="Card-picture"><a href="#"><img th:src="@{/admin/image/{id}(id=${book.getId()})}" alt="card.jpg"/></a>
                         </div>
                         <div class="Card-content">
                             <strong><a href="#" th:text="${book.getName()}"/>
@@ -42,7 +42,7 @@
                                 <span>Осталось: </span><span th:text="${book.getCount()}"></span>
                             </div>
                             <form class="form form_search" method="post" th:action="@{/api/bookInCart/{bookId}(bookId=${book.getId()})}">
-                                <button class="search-button" type="submit">Купить
+                                <button type="submit">Купить
                                 </button>
                             </form>
                         </div>
