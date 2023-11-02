@@ -23,7 +23,7 @@
         <main class="Middle-main">
             <h1 class="Middle-title">Корзина
             </h1>
-            <div class="form Cart" action="#" method="post">
+            <div class="form Cart">
                 <div class="Cart-product" th:each="bookInCart : ${listBooksInCart}">
                     <div class="Cart-block Cart-block_row">
                         <div class="Cart-block Cart-block_pict"><a class="Cart-pict" href="#"><img class="Cart-img" th:src="@{/admin/image/{id}(id=${bookInCart.getBook().getId()})}" src="/assets/img/content/main/card.jpg" alt="card.jpg"/></a>
@@ -51,14 +51,14 @@
                     </div>
                 </div>
 
-                <div class="Cart-total">
+                <form class="Cart-total" method="post" th:action="@{/api/buy/createOrder/{cartId}(cartId=${cartId})}">
                     <div class="Cart-block Cart-block_total">
                         <strong class="Cart-title">Итого:
-                        </strong><span class="Cart-price" th:text="${priceTotal}">534</span> р.</span>
+                        </strong><span class="Cart-price" th:text="${priceTotal}">534</span><span> р.</span>
                     </div>
-                    <div class="Cart-block"><a class="btn btn_success btn_md">Купить</a>
-                    </div>
-                </div>
+                    <button class="Cart-block"><a class="btn btn_success btn_md">Купить</a>
+                    </button>
+                </form>
             </div>
         </main>
     </div>

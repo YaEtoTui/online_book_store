@@ -13,12 +13,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @Table(name = "buy_book")
 public class BuyBook extends BaseDomainEntity {
-    Integer count;
-    @OneToOne()
+    String name;
+    String pathImage;
+    @ManyToOne()
     @JoinColumn(name = "buy_id")
     Buy buy;
-    @OneToOne()
-    @JoinColumn(name = "book_id")
-    Book book;
-
 }

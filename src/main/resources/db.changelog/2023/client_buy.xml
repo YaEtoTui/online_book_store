@@ -23,6 +23,18 @@
                 <constraints nullable="false"/>
             </column>
 
+            <column name="cart_id" type="bigint">
+                <constraints foreignKeyName="client_cart_fk"
+                             referencedTableName="cart"
+                             referencedColumnNames="id"/>
+            </column>
+
+            <column name="account_id" type="bigint">
+                <constraints foreignKeyName="client_account_fk"
+                             referencedTableName="account"
+                             referencedColumnNames="id"/>
+            </column>
+
         </createTable>
 
         <createTable tableName="buy">
@@ -40,8 +52,10 @@
         </createTable>
 
         <sql>
-            insert into client values (5, 'Egor', 'zachem@gmail.com'),
-                                      (6, 'Sacha', 'ctoeto@yandex.ru')
+            insert into buy values (1002), (1003);
+            insert into client values (5, 'Egor', 'zachem@gmail.com', 100, 2),
+                                      (6, 'Sacha', 'ctoeto@yandex.ru', 101, 1);
+
         </sql>
 
     </changeSet>

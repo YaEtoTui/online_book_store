@@ -1,9 +1,6 @@
 package com.project.online_book_store.app.domain.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,4 +18,6 @@ import java.util.List;
 public class Cart extends BaseDomainEntity {
     @OneToMany(mappedBy = "cart", fetch = FetchType.LAZY)
     List<BookInCart> bookInCartList = new LinkedList<>();
+    @OneToOne(mappedBy = "cart", fetch = FetchType.LAZY)
+    Client client;
 }

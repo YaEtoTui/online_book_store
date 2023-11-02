@@ -6,7 +6,6 @@ import com.project.online_book_store.app.domain.entity.dto.response.BookResponse
 import com.project.online_book_store.app.repository.BuyBookRepository;
 import com.project.online_book_store.app.repository.ClientRepository;
 import com.project.online_book_store.app.service.BuyBookService;
-import com.project.online_book_store.app.service.factory.BuyBookFactory;
 import jakarta.transaction.Transactional;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -23,12 +22,17 @@ public class BuyBookServiceImpl implements BuyBookService {
 
     BuyBookRepository buyBookRepository;
     ClientRepository clientRepository;
-    BuyBookFactory buyBookFactory;
 
     @Override
     public List<BookResponse> showBooks() {
         Client client = clientRepository.findClientByName("Egor");
         List<BuyBook> bookList = buyBookRepository.findAllByBuy_Client(client);
-        return buyBookFactory.createBookListResponse(bookList);
+//        return buyBookFactory.createBookListResponse(bookList);
+        return null;
+    }
+
+    @Override
+    public List<BuyBook> getListBuyBooks() {
+        return buyBookRepository.findAll();
     }
 }

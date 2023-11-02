@@ -83,23 +83,22 @@
         </createTable>
 
         <createTable tableName="buy_book">
+
             <column name="id" type="bigint">
                 <constraints primaryKey="true"/>
             </column>
 
-            <column name="count" type="int4">
+            <column name="name" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="path_image" type="varchar">
                 <constraints nullable="false"/>
             </column>
 
             <column name="buy_id" type="bigint">
                 <constraints foreignKeyName="buy_book_buy_fk"
                              referencedTableName="buy"
-                             referencedColumnNames="id"/>
-            </column>
-
-            <column name="book_id" type="bigint">
-                <constraints foreignKeyName="buy_book_book_fk"
-                             referencedTableName="book"
                              referencedColumnNames="id"/>
             </column>
 

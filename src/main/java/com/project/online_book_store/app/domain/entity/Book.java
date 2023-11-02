@@ -33,8 +33,6 @@ public class Book extends BaseDomainEntity{
     @ManyToOne()
     @JoinColumn(name = "genre_id")
     Genre genre;
-    @OneToOne(mappedBy = "book", fetch = FetchType.LAZY)
-    BuyBook buyBook;
     @OneToMany(mappedBy = "book", fetch = FetchType.LAZY)
     List<BookInCart> bookInCart = new LinkedList<>();
 
@@ -50,7 +48,6 @@ public class Book extends BaseDomainEntity{
         pathImage = path.toString();
         author = book.getAuthor();
         genre = book.getGenre();
-        buyBook = book.getBuyBook();
         bookInCart = book.getBookInCart();
     }
 }

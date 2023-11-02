@@ -1,7 +1,10 @@
 package com.project.online_book_store.web.controller;
 
 import com.project.online_book_store.app.domain.entity.BookInCart;
+import com.project.online_book_store.app.domain.entity.Cart;
+import com.project.online_book_store.app.repository.CartRepository;
 import com.project.online_book_store.app.service.CartService;
+import com.project.online_book_store.app.service.OrdersService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -18,6 +21,8 @@ import java.util.List;
 public class CartController {
 
     CartService cartService;
+    OrdersService ordersService;
+    CartRepository cartRepository;
 
     @GetMapping("/cart")
     public String getCartPage(Model model){
@@ -29,6 +34,8 @@ public class CartController {
             price += list.get(i).getBook().getPrice();
         }
         model.addAttribute("priceTotal", price);
+        Cart cart = cartRepository.getReferenceById(100L);
+        model.addAttribute("cartId", cart.getId());
         return "cart";
     }
 
@@ -44,6 +51,12 @@ public class CartController {
         System.out.println(bookInCartId);
         cartService.deleteBookInCart(bookInCartId);
         System.out.println("Книга удалена");
+        return "redirect:/api/cart";
+    }
+
+    @PostMapping("/buy/createOrder/{cartId}")
+    public String createOrder(@PathVariable Long cartId) {
+        ordersService.createOrder(cartId);
         return "redirect:/api/cart";
     }
 }
