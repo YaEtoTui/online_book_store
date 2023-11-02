@@ -9,6 +9,40 @@
 
         <createSequence sequenceName="hibernate_sequence" startValue="1" incrementBy="1"/>
 
+        <createTable tableName="cart">
+
+            <column name="id" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+
+        </createTable>
+
+        <createTable tableName="book_in_cart">
+
+            <column name="id" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="book_id" type="bigint">
+                <constraints foreignKeyName="books_cart_book_fk"
+                             referencedTableName="book"
+                             referencedColumnNames="id"/>
+            </column>
+
+            <column name="cart_id" type="bigint">
+                <constraints foreignKeyName="books_cart_cart_fk"
+                             referencedTableName="cart"
+                             referencedColumnNames="id"/>
+            </column>
+
+        </createTable>
+
+        <sql>
+            insert into cart values (100);
+            insert into book_in_cart values (1001, 9, 100),
+                                            (10002, 10, 100)
+        </sql>
+
         <createTable tableName="step">
 
             <column name="id" type="bigint">

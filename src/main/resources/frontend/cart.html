@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cart</title>
+    <meta name="description" content="Корзина">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <link rel="preload" href="/assets/fonts/Montserrat/Montserrat-SemiBold.woff2" as="font" crossorigin="anonymous">
+    <link rel="preload" href="/assets/fonts/Montserrat/Montserrat-Light.woff2" as="font" crossorigin="anonymous">
+    <link rel="preload" href="/assets/fonts/Montserrat/Montserrat-Medium.woff2" as="font" crossorigin="anonymous">
+    <link rel="preload" href="/assets/fonts/Montserrat/Montserrat-ExtraBold.woff2" as="font" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/fonts.min.css?v=22193648">
+    <link rel="stylesheet" href="/assets/css/basic.min.css?v=22193648">
+    <link rel="stylesheet" href="/assets/css/extra.min.css?v=22193648">
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script defer src="/assets/js/scripts.min.js?v=22193648"></script>
+</head>
+<body class="Site">
+<header th:replace="~{fragments/header_fragment :: headFragment}">
+</header>
+<div class="Middle">
+    <div class="wrap">
+        <main class="Middle-main">
+            <h1 class="Middle-title">Корзина
+            </h1>
+            <div class="form Cart" action="#" method="post">
+                <div class="Cart-product" th:each="book : ${listBooksInCart}">
+                    <div class="Cart-block Cart-block_row">
+                        <div class="Cart-block Cart-block_pict"><a class="Cart-pict" href="#"><img class="Cart-img" src="/assets/img/content/main/card.jpg" alt="card.jpg"/></a>
+                        </div>
+                        <div class="Cart-block Cart-block_row">
+                            <div class="Cart-block Cart-block_info">
+                                <div class="Cart-author"><a href="#" th:text="${book.getAuthor().getNameAuthor()}">Борис Васильевич Бедный</a>
+                                </div>
+                                <div class="Cart-title"><a href="#" th:text="${book.getName()}">Жизнь</a>
+                                </div>
+                                <form class="Cart-buttons" method="post" th:action="@{/api/deleteBookInCart/{bookId}(bookId=${book.getId()})}">
+                                    <div class="Cart-btn">
+                                        <button class="btn btn_danger btn_outline" data-sendstatus="UNLINK" data-bookid="[1122]"><span class="btn-icon"><img src="/assets/img/icons/trash.svg" alt="trash.svg"/></span><span class="btn-content">Удалить</span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="Cart-block Cart-block_price">
+                                <div class="Cart-priceTitle">Цена:
+                                </div>
+                                <div class="Cart-price"><span th:text="${book.getPrice()}"></span><span>р.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Cart-total">
+                    <div class="Cart-block Cart-block_total">
+                        <strong class="Cart-title">Итого:
+                        </strong><span class="Cart-price">534 р.</span>
+                    </div>
+                    <div class="Cart-block"><a class="btn btn_success btn_md">Купить</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<footer th:replace="~{fragments/footer_fragment :: footFragment}">
+</footer>
+</body>
+</html>

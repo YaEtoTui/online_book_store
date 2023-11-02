@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://thymeleaf.org ">
+<body>
+<footer class="Footer" th:fragment="footFragment">
+    <div class="wrap">
+        <div class="row Footer-main">
+            <div class="row-block"><a class="logo logo_footer Footer-logo" th:href="@{/api/}"><img class="logo-image"
+                                                                                         src="/assets/img/icon_book.png"
+                                                                                         alt="logo_footer.png"/><span
+                    class="logo-text">Online-book store</span></a>
+                <p>Книжный-интернет магазин</p>
+            </div>
+            <div class="row-block">
+                <ul class="menu menu_vt Footer-menu">
+                    <li class="menu-item"><a class="menu-link" th:href="@{/api/}">Главная</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
