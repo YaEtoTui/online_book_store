@@ -17,3 +17,10 @@ spring:
     change-log: classpath:db.changelog/db.changelog-master.xml
     enabled: true
     contexts: store
+
+  web:
+    resources:
+      static-locations: classpath:frontend/
+
+  thymeleaf:
+    prefix: classpath:frontend/

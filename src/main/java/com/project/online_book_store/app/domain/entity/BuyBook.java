@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.LinkedList;
+
 @Entity
 @Getter
 @Setter
@@ -13,12 +15,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @Table(name = "buy_book")
 public class BuyBook extends BaseDomainEntity {
-    Integer count;
-    @OneToOne()
+    String name;
+    String pathImage;
+    @ManyToOne()
     @JoinColumn(name = "buy_id")
     Buy buy;
-    @OneToOne()
-    @JoinColumn(name = "book_id")
-    Book book;
-
 }

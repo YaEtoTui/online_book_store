@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.LinkedList;
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -13,11 +16,10 @@ import lombok.Setter;
 @AllArgsConstructor
 @Table(name = "buy")
 public class Buy extends BaseDomainEntity {
-    @OneToOne()
-    @JoinColumn(name = "client_id")
-    Client client;
     @OneToOne(mappedBy = "buy", fetch = FetchType.LAZY)
-    BuyBook buyBook;
+    Client client;
+    @OneToMany(mappedBy = "buy", fetch = FetchType.LAZY)
+    List<BuyBook> buyBook = new LinkedList<>();
     @OneToOne(mappedBy = "buy" , fetch = FetchType.LAZY)
     BuyStep buyStep;
 }

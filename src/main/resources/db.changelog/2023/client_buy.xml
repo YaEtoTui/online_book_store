@@ -9,6 +9,14 @@
 
         <createSequence sequenceName="hibernate_sequence" startValue="1" incrementBy="1"/>
 
+        <createTable tableName="buy">
+
+            <column name="id" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+
+        </createTable>
+
         <createTable tableName="client">
 
             <column name="id" type="bigint">
@@ -23,27 +31,30 @@
                 <constraints nullable="false"/>
             </column>
 
-        </createTable>
-
-        <createTable tableName="buy">
-
-            <column name="id" type="bigint">
-                <constraints primaryKey="true"/>
+            <column name="cart_id" type="bigint">
+                <constraints foreignKeyName="client_cart_fk"
+                             referencedTableName="cart"
+                             referencedColumnNames="id"/>
             </column>
 
-            <column name="client_id" type="bigint">
-                <constraints foreignKeyName="buy_client_fk"
-                             referencedTableName="client"
+            <column name="account_id" type="bigint">
+                <constraints foreignKeyName="client_account_fk"
+                             referencedTableName="account"
+                             referencedColumnNames="id"/>
+            </column>
+
+            <column name="buy_id" type="bigint">
+                <constraints foreignKeyName="client_buy_fk"
+                             referencedTableName="buy"
                              referencedColumnNames="id"/>
             </column>
 
         </createTable>
 
         <sql>
-            insert into client values (5, 'Egor', 'zachem@gmail.com'),
-                                      (6, 'Sacha', 'ctoeto@yandex.ru');
-            insert into buy values (7, 5),
-                                   (8, 6)
+            insert into buy values (1002), (1003);
+            insert into client values (5, 'Egor', 'zachem@gmail.com', 100, 2, 1002),
+                                      (6, 'Sacha', 'ctoeto@yandex.ru', 101, 1, 1003)
         </sql>
 
     </changeSet>

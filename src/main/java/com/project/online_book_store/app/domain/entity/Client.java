@@ -15,6 +15,13 @@ import lombok.Setter;
 public class Client extends BaseDomainEntity {
     String name;
     String email;
-    @OneToOne(mappedBy = "client", fetch = FetchType.LAZY)
+    @OneToOne
+    @JoinColumn(name = "buy_id")
     Buy buy;
+    @OneToOne
+    @JoinColumn(name = "cart_id")
+    Cart cart;
+    @OneToOne
+    @JoinColumn(name = "account_id")
+    Account account;
 }
