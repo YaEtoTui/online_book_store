@@ -23,9 +23,9 @@
         <main class="Middle-main">
             <h1 class="Middle-title">Заказы
             </h1>
-            <div class="form Cart">
+            <div class="form Cart" th:each="listBuyBook : ${mapListBooks}">
                 <div>
-                    <span>Заказ: </span><span th:text="${buyId}"></span>
+                    <span>Заказ: </span><span th:text="${listBuyBook.key}"></span>
                 </div>
             </div>
 <!--            <form class="form form_search" method="post" th:action="@{/api/orders/order/{id}(id=${buyId})}">-->

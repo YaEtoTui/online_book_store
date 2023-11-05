@@ -88,6 +88,11 @@
                 <constraints primaryKey="true"/>
             </column>
 
+            <column name="number" type="int4">
+                <constraints nullable="false"/>
+            </column>
+
+
             <column name="name" type="varchar">
                 <constraints nullable="false"/>
             </column>

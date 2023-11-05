@@ -1,6 +1,7 @@
 package com.project.online_book_store.web.controller;
 
 import com.project.online_book_store.app.domain.entity.BookInCart;
+import com.project.online_book_store.app.domain.entity.BuyBook;
 import com.project.online_book_store.app.domain.entity.Cart;
 import com.project.online_book_store.app.repository.CartRepository;
 import com.project.online_book_store.app.service.CartService;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/api")
@@ -34,7 +36,7 @@ public class CartController {
             price += list.get(i).getBook().getPrice();
         }
         model.addAttribute("priceTotal", price);
-        Cart cart = cartRepository.getReferenceById(100L);
+        Cart cart = cartRepository.getReferenceById(10000L); //поменять, когда создам auth
         model.addAttribute("cartId", cart.getId());
         return "cart";
     }
