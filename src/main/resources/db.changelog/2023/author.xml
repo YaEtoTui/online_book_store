@@ -23,7 +23,15 @@
 
         <sql>
             insert into author values (3, 'Pushkin'),
-                                    (4, 'Dostoevski')
+                                    (4, 'Dostoevski'),
+                                    (5, 'Breadberie'),
+                                    (6, 'Griboedov'),
+                                    (7, 'Uaild'),
+                                    (8, 'Gogol'),
+                                    (9, 'Tolstoy'),
+                                    (10, 'Fonvizin'),
+                                    (11, 'Turgenev'),
+                                    (12, 'Goncharov')
         </sql>
 
     </changeSet>
