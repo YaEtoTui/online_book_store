@@ -53,8 +53,8 @@
 
         <sql>
             insert into buy values (1002), (1003);
-            insert into client values (5, 'Egor', 'zachem@gmail.com', 100, 2, 1002),
-                                      (6, 'Sacha', 'ctoeto@yandex.ru', 101, 1, 1003)
+            insert into client values (50, 'Egor', 'zachem@gmail.com', 10000, 2, 1002),
+                                      (60, 'Sacha', 'ctoeto@yandex.ru', 10100, 1, 1003)
         </sql>
 
     </changeSet>

@@ -36,9 +36,9 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public void addBookInCart(Long bookId) {
-        Cart cart = cartRepository.getReferenceById(100L);
+        Cart cart = cartRepository.getReferenceById(1000L);
         Book book = bookRepository.getReferenceById(bookId);
-        if (booksInCartRepository.findBookInCartsByBookAndCart_Id(book, 100L) != null) {
+        if (booksInCartRepository.findBookInCartsByBookAndCart_Id(book, 1000L) != null) {
             BookInCart bookInCart = new BookInCart(book, cart);
             booksInCartRepository.save(bookInCart);
         }

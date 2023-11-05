@@ -76,14 +76,23 @@
                              referencedColumnNames="id"/>
             </column>
 
+            <column name="path_image" type="varchar">
+                <constraints nullable="true"/>
+            </column>
+
         </createTable>
 
         <createTable tableName="buy_book">
+
             <column name="id" type="bigint">
                 <constraints primaryKey="true"/>
             </column>
 
-            <column name="count" type="int4">
+            <column name="name" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="path_image" type="varchar">
                 <constraints nullable="false"/>
             </column>
 
@@ -93,19 +102,23 @@
                              referencedColumnNames="id"/>
             </column>
 
-            <column name="book_id" type="bigint">
-                <constraints foreignKeyName="buy_book_book_fk"
-                             referencedTableName="book"
-                             referencedColumnNames="id"/>
-            </column>
-
         </createTable>
 
         <sql>
             insert into genre values (11, 'Стихотворение'),
-                                     (12, 'Произведение');
-            insert into book values (9, 'Nanya', 1, 'Про няню...', 'Русский', 1826, 100, 1, 3, 11),
-                                    (10, 'Преступление и наказание', 485, 'Про разделении социума', 'Русский', 1866, 300, 20, 4, 12)
+                                     (12, 'Произведение'),
+                                     (13, 'Фанатастика'),
+                                     (14, 'Пьеса'),
+                                     (15, 'Роман'),
+                                     (16, 'Проза');
+            insert into book values (90, 'Няня', 1, 'Про няню имеющую за собой особую тайну', 'Русский', 1826, 100, 1, 3, 11, 'C:\Projects\Projects_Naumen\online_book_store\src\main\resources\images\imagehandler.jpg'),
+                                    (100, 'Преступление и наказание', 485, 'Про разделении социума и моральный выбор', 'Русский', 1866, 300, 20, 4, 12, 'C:\\Projects\\Projects_Naumen\\online_book_store\\src\\main\\resources\\images\\Prestuplenie_i_nakazanie-cover3D-800-transp.png'),
+                                    (110, '451 градус по фарингейту', 256, 'Про мир где запрещенны книги', 'Русский', 1953, 250, 15, 5, 13,'C:\\Projects\\Projects_Naumen\\online_book_store\\src\\main\\resources\\images\\451-gradus-po-faringeitu.png'),
+                                    (120, 'Горе от ума', 120, 'О конфликте старого и нового поколения дворян', 'Русский', 1822, 200, 50, 6, 14, 'C:\\Projects\\Projects_Naumen\\online_book_store\\src\\main\\resources\\images\\Gore-ot-uma.png'),
+                                    (130, 'Портрет Дориана Грея', 320, 'О вечных вопросах человечества — о смысле жизни', 'Русский', 1890, 500, 5, 7, 15, 'C:\\Projects\\Projects_Naumen\\online_book_store\\src\\main\\resources\\images\\Portret-doriana-greya.png'),
+                                    (140, 'Мёртвык души', 352, 'О чиновнике который пытается нажить состояние необычным способом', 'Русский', 1842, 300, 10, 8, 16, 'C:\\Projects\\Projects_Naumen\\online_book_store\\src\\main\\resources\\images\\Mertvie-dushi.png'),
+                                    (150, 'Война и мир', 1300, 'Об исторической судьбе русского народа в Отечественной войне 1812 года', 'Русский', 1869, 700, 3, 9, 16, 'C:\\Projects\\Projects_Naumen\\online_book_store\\src\\main\\resources\\images\\Voina-i-mir.png'),
+                                    (160, 'Недоросль', 288, 'О пороках которые требуют немедленного исправления', 'Русский', 1782, 400, 17, 10, 16, 'C:\\Projects\\Projects_Naumen\\online_book_store\\src\\main\\resources\\images\\Nedorosl.png')
         </sql>
 
     </changeSet>

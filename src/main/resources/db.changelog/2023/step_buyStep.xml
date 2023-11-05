@@ -30,8 +30,8 @@
         </createTable>
 
         <sql>
-            insert into book_in_cart values (1001, 9, 100),
-                                            (10002, 10, 100)
+            insert into book_in_cart values (1001, 90, 10000),
+                                            (10002, 100, 10000)
         </sql>
 
         <createTable tableName="step">

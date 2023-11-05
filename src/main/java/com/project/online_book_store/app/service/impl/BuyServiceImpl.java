@@ -20,7 +20,7 @@ public class BuyServiceImpl implements BuyService {
 
     @Override
     public Buy searchBuyByClient() {
-        Client client = clientRepository.getReferenceById(5L);
+        Client client = clientRepository.getReferenceById(50L);
         return client.getBuy();
     }
 }

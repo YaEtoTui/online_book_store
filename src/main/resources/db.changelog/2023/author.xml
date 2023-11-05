@@ -22,16 +22,16 @@
         </createTable>
 
         <sql>
-            insert into author values (3, 'Pushkin'),
-                                    (4, 'Dostoevski'),
-                                    (5, 'Breadberie'),
-                                    (6, 'Griboedov'),
-                                    (7, 'Uaild'),
-                                    (8, 'Gogol'),
-                                    (9, 'Tolstoy'),
-                                    (10, 'Fonvizin'),
-                                    (11, 'Turgenev'),
-                                    (12, 'Goncharov')
+            insert into author values (3, 'Пушкин'),
+                                    (4, 'Достоевский'),
+                                    (5, 'Брэдбери'),
+                                    (6, 'Грибоедов'),
+                                    (7, 'Уайльд'),
+                                    (8, 'Гоголь'),
+                                    (9, 'Толстой'),
+                                    (10, 'Фонвизин'),
+                                    (11, 'Тургенев'),
+                                    (12, 'Гончаров')
         </sql>
 
     </changeSet>

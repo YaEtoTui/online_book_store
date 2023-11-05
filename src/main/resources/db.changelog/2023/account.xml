@@ -42,7 +42,7 @@
         </createTable>
 
         <sql>
-            insert into cart values (100), (101);
+            insert into cart values (10000), (10100);
             insert into account values (1, 'user', 'user', 'ROLE_USER', 'Saz Eg Alex'),
                                         (2, 'admin', 'admin', 'ROLE_ADMIN', 'Rus Al Al')
         </sql>
