@@ -40,4 +40,11 @@ public class AdminServiceImpl implements AdminService {
         Book bookEntity = bookRepository.save(book);
         return bookFactory.createBookResponse(bookEntity);
     }
+
+    @Override
+    public BookResponse deleteBook(Long bookId) {
+        Book book = bookRepository.getReferenceById(bookId);
+        bookRepository.delete(book);
+        return bookFactory.createBookResponse(book);
+    }
 }

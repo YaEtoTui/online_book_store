@@ -28,10 +28,22 @@ public class AdminController {
     AdminService adminService;
     BookRepository bookRepository;
 
-    @PostMapping("/uploadImage/{imageId}")
+    @PostMapping("/uploadImage/image/{imageId}")
     public ResponseEntity<BookResponse> uploadImage(@PathVariable("imageId") Long imageId, @RequestParam MultipartFile image) {
         return ResponseEntity.ok()
                 .body(adminService.uploadImage(imageId, image));
+    }
+
+    @PostMapping("/request/book")
+    public ResponseEntity<BookResponse> addNewBook(@RequestBody CreateRequestBook createRequestBook) {
+        return ResponseEntity.ok()
+                .body(adminService.addNewBook(createRequestBook));
+    }
+
+    @DeleteMapping("/request/delete/{bookId}")
+    public ResponseEntity<BookResponse> deleteBook(@PathVariable("bookId") Long bookId) {
+        return ResponseEntity.ok()
+                .body(adminService.deleteBook(bookId));
     }
 
     @GetMapping("/image/{id}")
@@ -46,11 +58,5 @@ public class AdminController {
         return ResponseEntity.ok()
                 .contentType(MediaType.IMAGE_JPEG)
                 .body(new UrlResource(path.toUri()));
-    }
-
-    @PostMapping("/books/book")
-    public ResponseEntity<BookResponse> addNewBook(@RequestBody CreateRequestBook createRequestBook) {
-        return ResponseEntity.ok()
-                .body(adminService.addNewBook(createRequestBook));
     }
 }

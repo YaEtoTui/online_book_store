@@ -60,7 +60,7 @@ public class Book extends BaseDomainEntity{
         yearIssue = bookContext.getYearIssue();
         price = bookContext.getPrice();
         count = bookContext.getCount();
-        pathImage = bookContext.toString();
+        pathImage = null;
         author = bookContext.getAuthor();
         genre = bookContext.getGenre();
         bookInCart = new LinkedList<>();
