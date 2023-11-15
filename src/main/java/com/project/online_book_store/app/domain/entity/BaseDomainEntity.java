@@ -1,7 +1,8 @@
 package com.project.online_book_store.app.domain.entity;
 
-import jakarta.persistence.*;
 import lombok.Getter;
+
+import javax.persistence.*;
 
 @Getter
 @MappedSuperclass

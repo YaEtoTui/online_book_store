@@ -26,7 +26,7 @@
             <div class="form Cart">
                 <div class="Cart-product" th:each="bookInCart : ${listBooksInCart}">
                     <div class="Cart-block Cart-block_row">
-                        <div class="Cart-block Cart-block_pict"><a class="Cart-pict" href="#"><img class="Cart-img" th:src="@{/admin/image/{id}(id=${bookInCart.getBook().getId()})}" src="/assets/img/content/main/card.jpg" alt="card.jpg"/></a>
+                        <div class="Cart-block Cart-block_pict"><a class="Cart-pict" href="#"><img class="Cart-img" th:src="@{/api/image/{id}(id=${bookInCart.getBook().getId()})}" src="/assets/img/content/main/card.jpg" alt="card.jpg"/></a>
                         </div>
                         <div class="Cart-block Cart-block_row">
                             <div class="Cart-block Cart-block_info">
@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="Cart-title"><a href="#" th:text="${bookInCart.getBook().getName()}"/>
                                 </div>
-                                <form class="Cart-buttons" method="post" th:action="@{/api/deleteBookInCart/{bookId}(bookId=${bookInCart.getId()})}">
+                                <form class="Cart-buttons" method="post" th:action="@{/user/deleteBookInCart/{bookId}(bookId=${bookInCart.getId()})}">
                                     <div class="Cart-btn">
                                         <button class="btn btn_danger btn_outline" data-sendstatus="UNLINK" data-bookid="[1122]"><span class="btn-icon"><img src="/assets/img/icons/trash.svg" alt="trash.svg"/></span><span class="btn-content">Удалить</span>
                                         </button>
@@ -51,7 +51,7 @@
                     </div>
                 </div>
 
-                <form class="Cart-total" method="post" th:action="@{/api/buy/createOrder/{cartId}(cartId=${cartId})}">
+                <form class="Cart-total" method="post" th:action="@{/user/buy/createOrder/{cartId}(cartId=${cartId})}">
                     <div class="Cart-block Cart-block_total">
                         <strong class="Cart-title">Итого:
                         </strong><span class="Cart-price" th:text="${priceTotal}">534</span><span> р.</span>

@@ -2,12 +2,12 @@ package com.project.online_book_store.app.domain.entity;
 
 
 import com.project.online_book_store.app.domain.entity.context.BookContext;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.*;
 import java.nio.file.Path;
 import java.util.LinkedList;
 import java.util.List;

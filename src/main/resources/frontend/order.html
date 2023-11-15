@@ -26,7 +26,7 @@
             <div class="form Cart">
                 <div class="Cart-product" th:each="book : ${listBuy}">
                     <div class="Cart-block Cart-block_row">
-                        <div class="Cart-block Cart-block_pict"><a class="Cart-pict" href="#"><img class="Cart-img" th:src="@{/admin/image/{id}(id=${bookInCart.getBook().getId()})}" src="/assets/img/content/main/card.jpg" alt="card.jpg"/></a>
+                        <div class="Cart-block Cart-block_pict"><a class="Cart-pict" href="#"><img class="Cart-img" th:src="@{/api/image/{id}(id=${bookInCart.getBook().getId()})}" src="/assets/img/content/main/card.jpg" alt="card.jpg"/></a>
                         </div>
                         <div class="Cart-block Cart-block_row">
                             <div class="Cart-block Cart-block_info">

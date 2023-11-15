@@ -3,10 +3,11 @@ package com.project.online_book_store.app.service.impl;
 import com.project.online_book_store.app.domain.entity.*;
 import com.project.online_book_store.app.repository.*;
 import com.project.online_book_store.app.service.OrdersService;
-import jakarta.transaction.Transactional;
+import javax.transaction.Transactional;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
@@ -24,7 +25,7 @@ public class OrdersServiceImpl implements OrdersService {
     BookRepository bookRepository;
     BooksInCartRepository booksInCartRepository;
     BuyBookRepository buyBookRepository;
-    ClientRepository clientRepository;
+    AccountRepository accountRepository;
 
     @Override
     public void createOrder(Long cartId) {
@@ -53,7 +54,10 @@ public class OrdersServiceImpl implements OrdersService {
     }
 
     public Map<Integer, List<BuyBook>> createMapListOrders() {
-        List<BuyBook> buyBookList = buyBookRepository.findAllByBuy_Client_Id(10000L); //поменять
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        Account account = accountRepository.findAccountByUsername(username);
+
+        List<BuyBook> buyBookList = buyBookRepository.findAllByBuy_Client_Id(account.getClient().getId()); //поменять
         return buyBookList.stream().collect(Collectors.groupingBy(BuyBook::getNumber));
 
     }

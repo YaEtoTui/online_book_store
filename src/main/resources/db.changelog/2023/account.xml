@@ -7,7 +7,7 @@
 
     <changeSet id="account" author="SazhinEA" context="store">
 
-        <createSequence sequenceName="hibernate_sequence" startValue="1" incrementBy="1"/>
+        <createSequence sequenceName="hibernate_sequence" startValue="100" incrementBy="1"/>
 
         <createTable tableName="account">
 
@@ -27,8 +27,8 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="fio" type="varchar">
-                <constraints nullable="true"/>
+            <column name="enabled" type="boolean">
+                <constraints nullable="false"/>
             </column>
 
         </createTable>
@@ -43,8 +43,6 @@
 
         <sql>
             insert into cart values (10000), (10100);
-            insert into account values (1, 'user', 'user', 'ROLE_USER', 'Saz Eg Alex'),
-                                        (2, 'admin', 'admin', 'ROLE_ADMIN', 'Rus Al Al')
         </sql>
 
     </changeSet>

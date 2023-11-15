@@ -8,7 +8,7 @@ import com.project.online_book_store.app.repository.BookRepository;
 import com.project.online_book_store.app.service.AdminService;
 import com.project.online_book_store.app.service.factory.AdminFactory;
 import com.project.online_book_store.app.service.factory.BookFactory;
-import jakarta.transaction.Transactional;
+import javax.transaction.Transactional;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;

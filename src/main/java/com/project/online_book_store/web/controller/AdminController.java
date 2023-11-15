@@ -45,18 +45,4 @@ public class AdminController {
         return ResponseEntity.ok()
                 .body(adminService.deleteBook(bookId));
     }
-
-    @GetMapping("/image/{id}")
-    @SneakyThrows
-    public ResponseEntity<?> uploadImage(@PathVariable("id") Long id) {
-        Book book = bookRepository.findById(id)
-                .orElseThrow(() -> new NotFoundBookException(
-                                String.format("Not found id '%s' book", id)
-                        )
-                );
-        Path path = Paths.get(book.getPathImage());
-        return ResponseEntity.ok()
-                .contentType(MediaType.IMAGE_JPEG)
-                .body(new UrlResource(path.toUri()));
-    }
 }

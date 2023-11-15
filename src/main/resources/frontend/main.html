@@ -1,10 +1,10 @@
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Main Page</title>
     <meta name="description" content="Описание страницы">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-    <link href="favicon.ico" rel="shortcut icon">
     <link rel="preload" href="/assets/fonts/Montserrat/Montserrat-SemiBold.woff2" as="font" crossorigin="anonymous">
     <link rel="preload" href="/assets/fonts/Montserrat/Montserrat-Light.woff2" as="font" crossorigin="anonymous">
     <link rel="preload" href="/assets/fonts/Montserrat/Montserrat-Medium.woff2" as="font" crossorigin="anonymous">
@@ -27,7 +27,7 @@
                 </div>
                 <div class="Cards Cards_refresh">
                     <div class="Card" th:each="book : ${listBooks}">
-                        <div class="Card-picture"><a href="#"><img th:src="@{/admin/image/{id}(id=${book.getId()})}" alt="card.jpg"/></a>
+                        <div class="Card-picture"><a href="#"><img th:src="@{/api/image/{id}(id=${book.getId()})}" alt="card.jpg"/></a>
                         </div>
                         <div class="Card-content">
                             <strong><a href="#" th:text="${book.getName()}"/>
@@ -41,7 +41,7 @@
                             <div>
                                 <span>Осталось: </span><span th:text="${book.getCount()}"></span>
                             </div>
-                            <form class="form form_search" method="post" th:action="@{/api/bookInCart/{bookId}(bookId=${book.getId()})}">
+                            <form class="form form_search" method="post" th:action="@{/user/bookInCart/{bookId}(bookId=${book.getId()})}">
                                 <button type="submit">Купить
                                 </button>
                             </form>

@@ -51,12 +51,6 @@
 
         </createTable>
 
-        <sql>
-            insert into buy values (1002), (1003);
-            insert into client values (50, 'Egor', 'zachem@gmail.com', 10000, 2, 1002),
-                                      (60, 'Sacha', 'ctoeto@yandex.ru', 10100, 1, 1003)
-        </sql>
-
     </changeSet>
 
 </databaseChangeLog>
