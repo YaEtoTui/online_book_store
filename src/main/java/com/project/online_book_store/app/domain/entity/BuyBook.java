@@ -14,7 +14,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Table(name = "buy_book")
 public class BuyBook extends BaseDomainEntity {
-    Integer number;
+    Long number;
     String name;
     String pathImage;
     @ManyToOne()

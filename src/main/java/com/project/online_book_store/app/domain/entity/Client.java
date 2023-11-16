@@ -1,5 +1,6 @@
 package com.project.online_book_store.app.domain.entity;
 
+import com.project.online_book_store.app.domain.entity.dto.request.RegisterForm;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

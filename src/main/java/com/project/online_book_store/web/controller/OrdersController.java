@@ -1,6 +1,8 @@
 package com.project.online_book_store.web.controller;
 
+import com.project.online_book_store.app.domain.entity.Account;
 import com.project.online_book_store.app.domain.entity.BuyBook;
+import com.project.online_book_store.app.repository.AccountRepository;
 import com.project.online_book_store.app.repository.BuyBookRepository;
 import com.project.online_book_store.app.service.BuyBookService;
 import com.project.online_book_store.app.service.BuyService;
@@ -9,6 +11,7 @@ import com.project.online_book_store.app.service.OrdersService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,14 +32,23 @@ public class OrdersController {
     CartService cartService;
     OrdersService ordersService;
     BuyBookRepository buyBookRepository;
+    AccountRepository accountRepository;
 
     @ModelAttribute("mapListBooks")
-    public Map<Integer, List<BuyBook>> mapListBooks(){
+    public Map<Long, List<BuyBook>> mapListBooks(){
         return ordersService.createMapListOrders();
     }
 
     @GetMapping("/orders")
     public String getOrdersPage(Model model) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        Account account = accountRepository.findAccountByUsername(username);
+
+        if (account != null) {
+            model.addAttribute("isAuthenticated", false);
+        } else {
+            model.addAttribute("isAuthenticated", true);
+        }
 
         model.addAttribute("buyId", buyService.searchBuyByClient().getId());
         model.addAttribute("listBuyBook", buyBookService.getListBuyBooks());
@@ -46,6 +58,15 @@ public class OrdersController {
 
     @PostMapping("/orders/order/{id}")
     public String getOrderDescPage(@PathVariable Long id, Model model) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        Account account = accountRepository.findAccountByUsername(username);
+
+        if (account != null) {
+            model.addAttribute("isAuthenticated", false);
+        } else {
+            model.addAttribute("isAuthenticated", true);
+        }
+
         model.addAttribute("listBuy", buyBookRepository.findAllByBuy_Id(id));
         return "order";
     }

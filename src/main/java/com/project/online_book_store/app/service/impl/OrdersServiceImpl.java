@@ -40,7 +40,7 @@ public class OrdersServiceImpl implements OrdersService {
 
 
             BuyBook buyBook = new BuyBook(
-                    (int) (book.getId() + 1),
+                    cart.getClient().getId() + 1,
                     book.getName(),
                     book.getPathImage(),
                     cart.getClient().getBuy()
@@ -53,7 +53,7 @@ public class OrdersServiceImpl implements OrdersService {
         }
     }
 
-    public Map<Integer, List<BuyBook>> createMapListOrders() {
+    public Map<Long, List<BuyBook>> createMapListOrders() {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         Account account = accountRepository.findAccountByUsername(username);
 

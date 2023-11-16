@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/api")
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
-public class LoginController {
+public class LogInController {
 
     @GetMapping("/login")
-    public String checkLoginPage() {
+    public String openLoginPage() {
         return "/login";
     }
 }

@@ -36,10 +36,16 @@ public class CartController {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         Account account = accountRepository.findAccountByUsername(username);
 
+        if (account != null) {
+            model.addAttribute("isAuthenticated", false);
+        } else {
+            model.addAttribute("isAuthenticated", true);
+        }
+
         model.addAttribute("listBooksInCart", account.getClient().getCart().getBookInCartList());
         model.addAttribute("countBooks", account.getClient().getCart().getBookInCartList().size());
         Integer price = 0;
-        List<BookInCart> list = cartService.showBooks();
+        List<BookInCart> list = account.getClient().getCart().getBookInCartList();
         for(int i = 0; i < list.size(); i++) {
             price += list.get(i).getBook().getPrice();
         }

@@ -9,5 +9,5 @@ import java.util.Map;
 public interface OrdersService {
     void createOrder(Long cartId);
 
-    Map<Integer, List<BuyBook>> createMapListOrders();
+    Map<Long, List<BuyBook>> createMapListOrders();
 }

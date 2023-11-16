@@ -41,8 +41,9 @@
                             <div>
                                 <span>Осталось: </span><span th:text="${book.getCount()}"></span>
                             </div>
+                            <br>
                             <form class="form form_search" method="post" th:action="@{/user/bookInCart/{bookId}(bookId=${book.getId()})}">
-                                <button type="submit">Купить
+                                <button class="btn btn_success btn_md" type="submit">Купить
                                 </button>
                             </form>
                         </div>

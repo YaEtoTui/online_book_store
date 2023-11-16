@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register Page</title>
+    <style>
+        #register_form {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .register_item {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div  id="register_form">
+        <h1 class="Section-title">Регистрация</h1>
+        <form th:action="@{/api/register}" th:object="${registerForm}" method="post">
+            <div><label> Username : <input class="register_item"
+                                            type="text" name="username" th:field="*{username}"/> </label></div>
+            <br>
+            <div><label> Password: <input class="register_item"
+                                          type="password" name="password" th:field="*{password}"/> </label></div>
+            <br>
+            <div><label> Name: <input class="register_item"
+                                          type="text" name="name" th:field="*{name}"/> </label></div>
+            <br>
+            <div><label> Email: <input class="register_item"
+                                          type="email" name="email" th:field="*{email}"/> </label></div>
+            <br>
+            <div><input type="submit" value="Sign Out"/></div>
+        </form>
+    </div>
+</body>
+</html>
