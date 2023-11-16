@@ -22,7 +22,7 @@ public class AccountFactory {
         );
     }
 
-    public AccountContext createAccountContext2(RegisterForm registerForm) {
+    public AccountContext createAccountContextRegisterForm(RegisterForm registerForm) {
         return new AccountContext(
                 registerForm.getUsername(),
                 passwordEncoder.encode(registerForm.getPassword())

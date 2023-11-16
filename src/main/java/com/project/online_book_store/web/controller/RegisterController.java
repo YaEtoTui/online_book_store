@@ -42,8 +42,8 @@ public class RegisterController {
 
     @PostMapping("/register")
     public String register(RegisterForm registerForm) {
-        AccountContext accountContext = accountFactory.createAccountContext2(registerForm);
-        Account account = new Account(accountContext);
+        AccountContext accountContext = accountFactory.createAccountContextRegisterForm(registerForm);
+        Account account = new Account(accountContext, "ROLE_USER");
         Account accountEntity = accountRepository.save(account);
 
         Cart cart = new Cart();

@@ -2,13 +2,12 @@ package com.project.online_book_store.web.controller;
 
 import com.project.online_book_store.app.domain.entity.Account;
 import com.project.online_book_store.app.domain.entity.BookInCart;
-import com.project.online_book_store.app.repository.AccountRepository;
+import com.project.online_book_store.app.service.AccountService;
 import com.project.online_book_store.app.service.CartService;
 import com.project.online_book_store.app.service.OrdersService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,18 +28,13 @@ public class CartController {
 
     CartService cartService;
     OrdersService ordersService;
-    AccountRepository accountRepository;
+    AccountService accountService;
 
     @GetMapping("/cart")
     public String getCartPage(Model model){
-        String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        Account account = accountRepository.findAccountByUsername(username);
 
-        if (account != null) {
-            model.addAttribute("isAuthenticated", false);
-        } else {
-            model.addAttribute("isAuthenticated", true);
-        }
+        model.addAttribute("isAuthenticated", accountService.isAuthenticated());
+        Account account = accountService.getAccount();
 
         model.addAttribute("listBooksInCart", account.getClient().getCart().getBookInCartList());
         model.addAttribute("countBooks", account.getClient().getCart().getBookInCartList().size());
@@ -64,9 +58,8 @@ public class CartController {
 
     @PostMapping("/deleteBookInCart/{bookInCartId}")
     public String deleteBookInCart(@PathVariable Long bookInCartId) {
-        System.out.println(bookInCartId);
         cartService.deleteBookInCart(bookInCartId);
-        System.out.println("Книга удалена");
+        System.out.println(String.format("Книга удалена c id %s", bookInCartId));
         return "redirect:/user/cart";
     }
 

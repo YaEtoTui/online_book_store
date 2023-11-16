@@ -26,10 +26,10 @@ public class Account extends BaseDomainEntity{
     @OneToOne(mappedBy = "account", fetch = FetchType.LAZY)
     Client client;
 
-    public Account(AccountContext account) {
+    public Account(AccountContext account, String roleStatus) {
         username = account.getUsername();
         password = account.getPassword();
-        role = "ROLE_USER";
+        role = roleStatus;
         enabled = true;
     }
 }

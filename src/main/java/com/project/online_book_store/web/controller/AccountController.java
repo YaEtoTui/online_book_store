@@ -4,6 +4,7 @@ import com.project.online_book_store.app.domain.entity.Account;
 import com.project.online_book_store.app.domain.entity.context.AccountContext;
 import com.project.online_book_store.app.domain.entity.dto.request.CreateRequestNewAccount;
 import com.project.online_book_store.app.repository.AccountRepository;
+import com.project.online_book_store.app.service.AccountService;
 import com.project.online_book_store.app.service.factory.AccountFactory;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -25,15 +26,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class AccountController {
 
-    AccountRepository accountRepository;
-    AccountFactory accountFactory;
+    AccountService accountService;
 
     @PostMapping("/new/account")
-    public ResponseEntity<Account> addAccount(@RequestBody CreateRequestNewAccount account) {
-        AccountContext accountContext = accountFactory.createAccountContext(account);
-        Account accountEntity = new Account(accountContext);
-        accountRepository.save(accountEntity);
+    public ResponseEntity<Account> addNewUserAccount(@RequestBody CreateRequestNewAccount account) {
         return ResponseEntity.ok()
-                .body(accountEntity);
+                .body(accountService.addNewUserAccount(account));
+    }
+
+    @PostMapping("/new/admin/account")
+    public ResponseEntity<Account> addNewAdminAccount(@RequestBody CreateRequestNewAccount account) {
+        return ResponseEntity.ok()
+                .body(accountService.addNewAdminAccount(account));
     }
 }
