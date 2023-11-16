@@ -41,10 +41,6 @@
 
         </createTable>
 
-        <sql>
-            insert into cart values (10000), (10100);
-        </sql>
-
     </changeSet>
 
 </databaseChangeLog>

@@ -32,8 +32,8 @@ public class BuyBookServiceImpl implements BuyBookService {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         Account account = accountRepository.findAccountByUsername(username);
 
-        Client client = clientRepository.findClientByName(account.getClient().getName());
-        List<BuyBook> bookList = buyBookRepository.findAllByBuy_Client(client);
+//        Client client = clientRepository.findClientByName(account.getClient().getName());
+//        List<BuyBook> bookList = buyBookRepository.findAllByOrderBuy_Client(client);
 //        return buyBookFactory.createBookListResponse(bookList);
         return null;
     }

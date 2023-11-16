@@ -26,12 +26,21 @@ public class OrdersServiceImpl implements OrdersService {
     BooksInCartRepository booksInCartRepository;
     BuyBookRepository buyBookRepository;
     AccountRepository accountRepository;
+    OrderRepository orderRepository;
 
     @Override
     public void createOrder(Long cartId) {
 
         Cart cart = cartRepository.getReferenceById(cartId);
         List<BookInCart> bookInCartList = cart.getBookInCartList();
+
+        Order order = new Order(
+                cart.getClient().getBuy(),
+                new LinkedList<>()
+        );
+
+        Order orderEntity = orderRepository.save(order);
+
 
         for(int i = 0; i < bookInCartList.size(); i++) {
             BookInCart bookInCart = bookInCartList.get(i);
@@ -40,10 +49,10 @@ public class OrdersServiceImpl implements OrdersService {
 
 
             BuyBook buyBook = new BuyBook(
-                    cart.getClient().getId() + 1,
                     book.getName(),
                     book.getPathImage(),
-                    cart.getClient().getBuy()
+                    orderEntity,
+                    cart.getClient()
             );
 
             buyBookRepository.save(buyBook);
@@ -57,8 +66,9 @@ public class OrdersServiceImpl implements OrdersService {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         Account account = accountRepository.findAccountByUsername(username);
 
-        List<BuyBook> buyBookList = buyBookRepository.findAllByBuy_Client_Id(account.getClient().getId()); //поменять
-        return buyBookList.stream().collect(Collectors.groupingBy(BuyBook::getNumber));
+        List<BuyBook> buyBookList = buyBookRepository.findBuyBooksByClient_Id(account.getClient().getId());
+
+        return buyBookList.stream().collect(Collectors.groupingBy((BuyBook buyBook) -> {return  buyBook.getOrder().getId();}));
 
     }
 }

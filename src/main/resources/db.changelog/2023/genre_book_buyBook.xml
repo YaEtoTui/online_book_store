@@ -82,16 +82,25 @@
 
         </createTable>
 
-        <createTable tableName="buy_book">
+        <createTable tableName="order">
 
             <column name="id" type="bigint">
                 <constraints primaryKey="true"/>
             </column>
 
-            <column name="number" type="bigint">
-                <constraints nullable="false"/>
+            <column name="buy_id" type="bigint">
+                <constraints foreignKeyName="order_buy_fk"
+                             referencedTableName="buy"
+                             referencedColumnNames="id"/>
             </column>
 
+        </createTable>
+
+        <createTable tableName="buy_book">
+
+            <column name="id" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
 
             <column name="name" type="varchar">
                 <constraints nullable="false"/>
@@ -101,9 +110,15 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="buy_id" type="bigint">
-                <constraints foreignKeyName="buy_book_buy_fk"
-                             referencedTableName="buy"
+            <column name="order_id" type="bigint">
+                <constraints foreignKeyName="buy_book_order_fk"
+                             referencedTableName="order"
+                             referencedColumnNames="id"/>
+            </column>
+
+            <column name="client_id" type="bigint">
+                <constraints foreignKeyName="buy_book_client_fk"
+                             referencedTableName="client"
                              referencedColumnNames="id"/>
             </column>
 

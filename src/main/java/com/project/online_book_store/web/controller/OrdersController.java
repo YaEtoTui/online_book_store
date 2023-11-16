@@ -34,10 +34,10 @@ public class OrdersController {
     BuyBookRepository buyBookRepository;
     AccountRepository accountRepository;
 
-    @ModelAttribute("mapListBooks")
-    public Map<Long, List<BuyBook>> mapListBooks(){
-        return ordersService.createMapListOrders();
-    }
+//    @ModelAttribute("mapListBooks")
+//    public Map<Long, List<BuyBook>> mapListBooks() {
+//        return ordersService.createMapListOrders();
+//    }
 
     @GetMapping("/orders")
     public String getOrdersPage(Model model) {
@@ -50,6 +50,7 @@ public class OrdersController {
             model.addAttribute("isAuthenticated", true);
         }
 
+        model.addAttribute("mapListBooks", ordersService.createMapListOrders());
         model.addAttribute("buyId", buyService.searchBuyByClient().getId());
         model.addAttribute("listBuyBook", buyBookService.getListBuyBooks());
         model.addAttribute("countBooks", cartService.showBooks().size());
@@ -67,7 +68,7 @@ public class OrdersController {
             model.addAttribute("isAuthenticated", true);
         }
 
-        model.addAttribute("listBuy", buyBookRepository.findAllByBuy_Id(id));
+        model.addAttribute("listBuy", buyBookRepository.findBuyBooksByOrderBuy_Id(id));
         return "order";
     }
 }

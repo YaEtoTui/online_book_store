@@ -18,9 +18,10 @@ import java.util.List;
 public class Buy extends BaseDomainEntity {
     @OneToOne(mappedBy = "buy", fetch = FetchType.LAZY)
     Client client;
-    @OneToMany(mappedBy = "buy", fetch = FetchType.LAZY)
-    List<BuyBook> buyBook = new LinkedList<>();
-    @OneToOne(mappedBy = "buy" , fetch = FetchType.LAZY)
-    BuyStep buyStep;
+//    @OneToMany(mappedBy = "buy", fetch = FetchType.LAZY)
+//    List<BuyBook> buyBook = new LinkedList<>();
+
+    @OneToMany(mappedBy = "buy" , fetch = FetchType.LAZY)
+    List<Order> orderList = new LinkedList<>();
 }
 

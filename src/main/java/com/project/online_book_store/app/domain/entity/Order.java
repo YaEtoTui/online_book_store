@@ -14,9 +14,12 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "step")
-public class Step extends BaseDomainEntity {
-    String nameStep;
-    @OneToMany(mappedBy = "step", fetch = FetchType.LAZY)
-    List<BuyStep> buyStep = new LinkedList<>();
+@Table(name = "order")
+public class Order extends BaseDomainEntity{
+    @ManyToOne
+    @JoinColumn(name = "buy_id")
+    Buy buy;
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+    List<BuyBook> buyBookList = new LinkedList<>();
+
 }
