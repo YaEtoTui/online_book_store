@@ -21,24 +21,29 @@
 <div class="Middle">
     <div class="wrap">
         <main class="Middle-main">
+            <ul class="breadcrumbs">
+                <li class="breadcrumbs-item"><a th:href="@{/user/orders}">Заказы</a>
+                </li>
+                <li class="breadcrumbs-item breadcrumbs-item_current" th:text="${order.getId()}"><span></span>
+                </li>
+            </ul>
             <h1 class="Middle-title">Заказ
+            </h1>
+            <h1 class="Middle-title">
+                <a th:href="@{/user/orders}">
+                    Назад
+                </a>
             </h1>
             <div class="form Cart">
                 <div class="Cart-product" th:each="book : ${listBuy}">
                     <div class="Cart-block Cart-block_row">
-                        <div class="Cart-block Cart-block_pict"><a class="Cart-pict" href="#"><img class="Cart-img" th:src="@{/api/image/{id}(id=${bookInCart.getBook().getId()})}" src="/assets/img/content/main/card.jpg" alt="card.jpg"/></a>
+                        <div class="Cart-block Cart-block_pict"><a class="Cart-pict" href="#"><img class="Cart-img" th:src="@{/api/image/buyBook/{id}(id=${book.getId()})}" src="/assets/img/content/main/card.jpg" alt="card.jpg"/></a>
                         </div>
                         <div class="Cart-block Cart-block_row">
                             <div class="Cart-block Cart-block_info">
-                                <div class="Cart-author"><a href="#" th:text="${book.getBook().getAuthor().getNameAuthor()}"/>
+                                <div class="Cart-author"><a href="#" th:text="${book.getAuthor()}"/>
                                 </div>
-                                <div class="Cart-title"><a href="#" th:text="${book.getBook().getName()}"/>
-                                </div>
-                            </div>
-                            <div class="Cart-block Cart-block_price">
-                                <div class="Cart-priceTitle">Цена:
-                                </div>
-                                <div class="Cart-price"><span th:text="${book.getBook().getPrice()}"></span><span>р.</span>
+                                <div class="Cart-title"><a href="#" th:text="${book.getName()}"/>
                                 </div>
                             </div>
                         </div>

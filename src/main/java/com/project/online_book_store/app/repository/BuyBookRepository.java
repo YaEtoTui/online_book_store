@@ -8,11 +8,9 @@ import java.util.List;
 
 @Repository
 public interface BuyBookRepository extends JpaRepository<BuyBook, Long> {
-    List<BuyBook> findBuyBooksByOrderBuyClient_Id(Long clientId);
 
     List<BuyBook> findAllByOrderId(Long id);
 
     List<BuyBook> findBuyBooksByClient_Id(Long buyId);
 
-    List<BuyBook> findBuyBooksByOrderBuy_Id(Long id);
 }

@@ -4,6 +4,7 @@ import com.project.online_book_store.app.domain.entity.Account;
 import com.project.online_book_store.app.domain.entity.BuyBook;
 import com.project.online_book_store.app.repository.AccountRepository;
 import com.project.online_book_store.app.repository.BuyBookRepository;
+import com.project.online_book_store.app.repository.OrderRepository;
 import com.project.online_book_store.app.service.BuyBookService;
 import com.project.online_book_store.app.service.BuyService;
 import com.project.online_book_store.app.service.CartService;
@@ -28,16 +29,12 @@ import java.util.Map;
 public class OrdersController {
 
     BuyBookService buyBookService;
-    BuyService buyService;
     CartService cartService;
     OrdersService ordersService;
     BuyBookRepository buyBookRepository;
     AccountRepository accountRepository;
+    OrderRepository orderRepository;
 
-//    @ModelAttribute("mapListBooks")
-//    public Map<Long, List<BuyBook>> mapListBooks() {
-//        return ordersService.createMapListOrders();
-//    }
 
     @GetMapping("/orders")
     public String getOrdersPage(Model model) {
@@ -51,13 +48,12 @@ public class OrdersController {
         }
 
         model.addAttribute("mapListBooks", ordersService.createMapListOrders());
-        model.addAttribute("buyId", buyService.searchBuyByClient().getId());
         model.addAttribute("listBuyBook", buyBookService.getListBuyBooks());
         model.addAttribute("countBooks", cartService.showBooks().size());
         return "orders";
     }
 
-    @PostMapping("/orders/order/{id}")
+    @GetMapping("/orders/order/{id}")
     public String getOrderDescPage(@PathVariable Long id, Model model) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         Account account = accountRepository.findAccountByUsername(username);
@@ -68,7 +64,8 @@ public class OrdersController {
             model.addAttribute("isAuthenticated", true);
         }
 
-        model.addAttribute("listBuy", buyBookRepository.findBuyBooksByOrderBuy_Id(id));
+        model.addAttribute("order", orderRepository.getReferenceById(id));
+        model.addAttribute("listBuy", buyBookRepository.findAllByOrderId(id));
         return "order";
     }
 }

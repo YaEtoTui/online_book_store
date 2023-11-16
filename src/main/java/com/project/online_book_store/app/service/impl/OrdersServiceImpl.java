@@ -50,6 +50,7 @@ public class OrdersServiceImpl implements OrdersService {
 
             BuyBook buyBook = new BuyBook(
                     book.getName(),
+                    book.getAuthor().getNameAuthor(),
                     book.getPathImage(),
                     orderEntity,
                     cart.getClient()

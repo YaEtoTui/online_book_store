@@ -25,13 +25,9 @@
             </h1>
             <div class="form Cart" th:each="listBuyBook : ${mapListBooks}">
                 <div>
-                    <span>Заказ: </span><span th:text="${listBuyBook.key}"></span>
+                    <a th:href="@{/user/orders/order/{id}(id=${listBuyBook.key})}"><span>Заказ: </span><span th:text="${listBuyBook.key}"></span></a>
                 </div>
             </div>
-<!--            <form class="form form_search" method="post" th:action="@{/api/orders/order/{id}(id=${buyId})}">-->
-<!--                <button type="submit">Поподробнее-->
-<!--                </button>-->
-<!--            </form>-->
         </main>
     </div>
 </div>

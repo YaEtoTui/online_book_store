@@ -19,6 +19,7 @@ import javax.persistence.Table;
 public class BuyBook extends BaseDomainEntity {
 //    Long number;
     String name;
+    String author;
     String pathImage;
 //    @ManyToOne()
 //    @JoinColumn(name = "buy_id")

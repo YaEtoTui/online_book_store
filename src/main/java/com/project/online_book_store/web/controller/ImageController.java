@@ -2,7 +2,9 @@ package com.project.online_book_store.web.controller;
 
 import com.project.online_book_store.app.common.exception.NotFoundBookException;
 import com.project.online_book_store.app.domain.entity.Book;
+import com.project.online_book_store.app.domain.entity.BuyBook;
 import com.project.online_book_store.app.repository.BookRepository;
+import com.project.online_book_store.app.repository.BuyBookRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -28,11 +30,26 @@ import java.nio.file.Paths;
 @RequiredArgsConstructor
 public class ImageController {
 
+    BuyBookRepository buyBookRepository;
     BookRepository bookRepository;
+
+    @GetMapping("/image/buyBook/{id}")
+    @SneakyThrows
+    public ResponseEntity<?> uploadImageBuyBook(@PathVariable("id") Long id) {
+        BuyBook book = buyBookRepository.findById(id)
+                .orElseThrow(() -> new NotFoundBookException(
+                                String.format("Not found id '%s' book", id)
+                        )
+                );
+        Path path = Paths.get(book.getPathImage());
+        return ResponseEntity.ok()
+                .contentType(MediaType.IMAGE_JPEG)
+                .body(new UrlResource(path.toUri()));
+    }
 
     @GetMapping("/image/{id}")
     @SneakyThrows
-    public ResponseEntity<?> uploadImage(@PathVariable("id") Long id) {
+    public ResponseEntity<?> uploadImageBook(@PathVariable("id") Long id) {
         Book book = bookRepository.findById(id)
                 .orElseThrow(() -> new NotFoundBookException(
                                 String.format("Not found id '%s' book", id)
