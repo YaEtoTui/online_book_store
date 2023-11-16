@@ -1,23 +1,18 @@
 package com.project.online_book_store.web.controller;
 
-import com.project.online_book_store.app.common.exception.NotFoundBookException;
-import com.project.online_book_store.app.domain.entity.Book;
 import com.project.online_book_store.app.domain.entity.dto.CreateRequestBook;
 import com.project.online_book_store.app.domain.entity.dto.response.BookResponse;
 import com.project.online_book_store.app.repository.BookRepository;
 import com.project.online_book_store.app.service.AdminService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import lombok.experimental.FieldDefaults;
-import org.springframework.core.io.UrlResource;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
+/* Админка. Здесь эндпоинты для добавления новых книг, изображений для них т.д.*/
+
 
 @RestController
 @RequestMapping("/admin")
@@ -26,7 +21,6 @@ import java.nio.file.Paths;
 public class AdminController {
 
     AdminService adminService;
-    BookRepository bookRepository;
 
     @PostMapping("/uploadImage/image/{imageId}")
     public ResponseEntity<BookResponse> uploadImage(@PathVariable("imageId") Long imageId, @RequestParam MultipartFile image) {

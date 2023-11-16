@@ -2,10 +2,7 @@ package com.project.online_book_store.web.controller;
 
 import com.project.online_book_store.app.common.exception.NotFoundBookException;
 import com.project.online_book_store.app.domain.entity.Book;
-import com.project.online_book_store.app.domain.entity.dto.response.BookResponse;
 import com.project.online_book_store.app.repository.BookRepository;
-import com.project.online_book_store.app.service.BookService;
-import com.project.online_book_store.app.service.CartService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -13,37 +10,25 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
+
+/*
+* Контроллер для выведения изображений книг на страницах
+* */
 
 @Controller
 @RequestMapping("/api")
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
-public class BookController {
+public class ImageController {
 
-    BookService bookService;
-    CartService cartService;
     BookRepository bookRepository;
-
-    @ModelAttribute("listBooks")
-    public List<BookResponse> listBooks(){
-        return bookService.getBooks();
-    }
-
-    @GetMapping("/")
-    public String getMainPage(Model model){
-        Boolean isAuthenticated = SecurityContextHolder.getContext().getAuthentication().isAuthenticated();
-        model.addAttribute("isAuthenticated", isAuthenticated);
-        model.addAttribute("countBooks", cartService.showBooks().size());
-        return "main";
-    }
 
     @GetMapping("/image/{id}")
     @SneakyThrows

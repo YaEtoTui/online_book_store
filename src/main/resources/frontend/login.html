@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <style>
+        #login_form {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .login_item {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<div  id="login_form" class="Section-header">
+    <h1 class="Section-title">Вход</h1>
+    <div th:if="${param.error}">
+        Invalid username and password.
+    </div>
+    <form th:action="@{/api/login}" method="post">
+        <div><label> User Name : <input class="login_item" type="text" name="username"/> </label></div>
+        <br>
+        <div><label> Password: <input class="login_item" type="password" name="password"/> </label></div>
+        <br>
+        <div><input type="submit" value="Sign In"/></div>
+    </form>
+</div>
+
+</div>
+</body>
+</html>

@@ -9,11 +9,15 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+/* Контроллер для создания новых аккаунтов(Было сделано, чтобы добавить хотя бы 1 аккаунт, просто так в liquibase нельзя добавить
+*   из-за кодирования пароля
+* */
+
 
 @RestController
 @RequestMapping("/api")

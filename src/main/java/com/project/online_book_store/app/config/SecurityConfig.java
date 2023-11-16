@@ -39,7 +39,9 @@ public class SecurityConfig {
                 .hasAnyRole("ADMIN")
                 .anyRequest().permitAll()
                 .and()
-                .httpBasic();
+                .formLogin(form -> form
+                        .loginPage("/api/login")
+                        .permitAll());
         return http.build();
     }
 

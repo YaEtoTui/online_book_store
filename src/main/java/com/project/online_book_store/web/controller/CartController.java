@@ -2,18 +2,12 @@ package com.project.online_book_store.web.controller;
 
 import com.project.online_book_store.app.domain.entity.Account;
 import com.project.online_book_store.app.domain.entity.BookInCart;
-import com.project.online_book_store.app.domain.entity.Cart;
-import com.project.online_book_store.app.domain.entity.Client;
 import com.project.online_book_store.app.repository.AccountRepository;
-import com.project.online_book_store.app.repository.CartRepository;
-import com.project.online_book_store.app.repository.ClientRepository;
 import com.project.online_book_store.app.service.CartService;
 import com.project.online_book_store.app.service.OrdersService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.apache.tomcat.util.http.parser.Authorization;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +17,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+
+/* Контроллер для перехода на страницу "Корзина"(это верхняя правая иконка). Здесь эндпоинты: удалить книгу, оформить заказ*/
+
 
 @Controller
 @RequestMapping("/user")

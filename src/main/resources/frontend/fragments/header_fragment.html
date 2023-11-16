@@ -9,7 +9,10 @@
             <div class="row">
                 <div class="row-block Header-logo"><a class="logo" th:href="@{/api/}"><img class="logo-image" src="/assets/img/icon_book.png" alt="icon_book.png"/><span class="logo-text">Online-book store</span></a>
                 </div>
-                <div class="row-block Header-logo"><a class="logo" th:href="@{/login}"><span class="logo-text">Войти</span></a>
+                <div th:if="${isAuthenticated}" class="row-block Header-logo"><a class="logo"  th:href="@{/api/register}"><span class="logo-text">Зарегистрироваться</span></a>
+                </div>
+                <br>
+                <div th:if="${isAuthenticated}" class="row-block Header-logo"><a class="logo"  th:href="@{/api/login}"><span class="logo-text">Войти</span></a>
                 </div>
                 <div class="row-block Header-cart">
                     <div class="CartBlock"><a class="CartBlock-block">
