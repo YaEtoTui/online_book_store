@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -43,5 +44,21 @@ public class MainPageController {
             model.addAttribute("countBooks", 0);
         }
         return "main";
+    }
+
+    @GetMapping("/api/book/desc/{bookId}")
+    public String getBookDescription(@PathVariable("bookId") Long bookId, Model model) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        Account account = accountRepository.findAccountByUsername(username);
+        if (account != null) {
+            model.addAttribute("isAuthenticated", false);
+            model.addAttribute("countBooks", account.getClient().getCart().getBookInCartList().size());
+        } else {
+            model.addAttribute("isAuthenticated", true);
+            model.addAttribute("countBooks", 0);
+        }
+        model.addAttribute("book", bookService.getBookById(bookId));
+
+        return "book_description";
     }
 }

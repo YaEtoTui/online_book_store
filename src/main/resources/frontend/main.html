@@ -16,44 +16,48 @@
     <script defer src="/assets/js/scripts.min.js?v=64223515"></script>
 </head>
 <body class="Site">
-<header th:replace="~{fragments/header_fragment :: headFragment}">
-</header>
-<div class="Middle">
-    <div class="wrap">
-        <main class="Middle-main">
-            <div class="Section">
-                <div class="Section-header">
-                    <h1 class="Section-title">Главная</h1>
-                </div>
-                <div class="Cards Cards_refresh">
-                    <div class="Card" th:each="book : ${listBooks}">
-                        <div class="Card-picture"><a href="#"><img th:src="@{/api/image/{id}(id=${book.getId()})}" alt="card.jpg"/></a>
-                        </div>
-                        <div class="Card-content">
-                            <strong><a href="#" th:text="${book.getName()}"/>
-                            </strong>
-                            <div>
-                                <span>Автор: </span><span th:text="${book.getAuthor().getNameAuthor()}" ></span>
+    <header th:replace="~{fragments/header_fragment :: headFragment}">
+    </header>
+    <div class="Middle">
+        <div class="wrap">
+            <main class="Middle-main">
+                <div class="Section">
+                    <div class="Section-header">
+                        <h1 class="Section-title">Главная</h1>
+                    </div>
+                    <div class="Cards Cards_refresh">
+                        <div class="Card" th:each="book : ${listBooks}">
+                            <div class="Card-picture"><a href="#"><img th:src="@{/api/image/{id}(id=${book.getId()})}" alt="card.jpg"/></a>
                             </div>
-                            <div>
-                                <span>Цена: </span><span th:text="${book.getPrice()}"></span><span> руб. </span>
+                            <div class="Card-content">
+                                <strong><a href="#" th:text="${book.getName()}"/>
+                                </strong>
+                                <div>
+                                    <span>Автор: </span><span th:text="${book.getAuthor().getNameAuthor()}" ></span>
+                                </div>
+                                <div>
+                                    <span>Цена: </span><span th:text="${book.getPrice()}"></span><span> руб. </span>
+                                </div>
+                                <div>
+                                    <span>Осталось: </span><span th:text="${book.getCount()}"></span>
+                                </div>
+                                <br>
+                                <form class="form form_search" method="post" th:action="@{/user/bookInCart/{id}(id=${book.getId()})}">
+                                    <button class="btn btn_success btn_md" type="submit">Купить
+                                    </button>
+                                </form>
+                                <br>
+                                <div>
+                                    <a th:href="@{/api/book/desc/{bookId}(bookId=${book.getId()})}">Подробности</a>
+                                </div>
                             </div>
-                            <div>
-                                <span>Осталось: </span><span th:text="${book.getCount()}"></span>
-                            </div>
-                            <br>
-                            <form class="form form_search" method="post" th:action="@{/user/bookInCart/{bookId}(bookId=${book.getId()})}">
-                                <button class="btn btn_success btn_md" type="submit">Купить
-                                </button>
-                            </form>
                         </div>
                     </div>
                 </div>
-            </div>
-        </main>
+            </main>
+        </div>
     </div>
-</div>
-<footer th:replace="~{fragments/footer_fragment :: footFragment}">
-</footer>
+    <footer th:replace="~{fragments/footer_fragment :: footFragment}">
+    </footer>
 </body>
 </html>
