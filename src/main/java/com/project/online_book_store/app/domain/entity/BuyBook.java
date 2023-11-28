@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/* Сущность "Купленная книга" используется для передачи информации из БД на сервис и наоборот */
+
 @Entity
 @Getter
 @Setter
@@ -17,13 +19,9 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Table(name = "buy_book")
 public class BuyBook extends BaseDomainEntity {
-//    Long number;
     String name;
     String author;
     String pathImage;
-//    @ManyToOne()
-//    @JoinColumn(name = "buy_id")
-//    Buy buy;
 
     @JoinColumn(name = "order_id")
     @ManyToOne

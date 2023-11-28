@@ -12,6 +12,7 @@ import java.nio.file.Path;
 import java.util.LinkedList;
 import java.util.List;
 
+/* Сущность Книга используется для передачи информации из БД на сервис и наоборот */
 
 @Entity
 @Getter

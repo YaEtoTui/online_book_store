@@ -1,12 +1,13 @@
 package com.project.online_book_store.app.domain.entity;
 
-import com.project.online_book_store.app.domain.entity.dto.request.RegisterForm;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+
+/* Сущность Клиент используется для передачи информации из БД на сервис и наоборот */
 
 @Entity
 @Getter

@@ -1,6 +1,6 @@
 package com.project.online_book_store.web.controller;
 
-import com.project.online_book_store.app.domain.entity.dto.CreateRequestBook;
+import com.project.online_book_store.app.domain.entity.dto.request.CreateRequestBook;
 import com.project.online_book_store.app.domain.entity.dto.response.BookResponse;
 import com.project.online_book_store.app.service.AdminService;
 import lombok.AccessLevel;

@@ -2,7 +2,7 @@ package com.project.online_book_store.app.service.factory;
 
 import com.project.online_book_store.app.domain.entity.context.AccountContext;
 import com.project.online_book_store.app.domain.entity.dto.request.CreateRequestNewAccount;
-import com.project.online_book_store.app.domain.entity.dto.request.RegisterForm;
+import com.project.online_book_store.app.domain.entity.dto.request.CreateRequestRegisterForm;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -22,7 +22,7 @@ public class AccountFactory {
         );
     }
 
-    public AccountContext createAccountContextRegisterForm(RegisterForm registerForm) {
+    public AccountContext createAccountContextRegisterForm(CreateRequestRegisterForm registerForm) {
         return new AccountContext(
                 registerForm.getUsername(),
                 passwordEncoder.encode(registerForm.getPassword())

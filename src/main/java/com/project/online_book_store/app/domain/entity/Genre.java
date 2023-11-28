@@ -9,6 +9,8 @@ import javax.persistence.*;
 import java.util.LinkedList;
 import java.util.List;
 
+/* Сущность Жанр используется для передачи информации из БД на сервис и наоборот */
+
 @Entity
 @Getter
 @Setter

@@ -9,6 +9,8 @@ import javax.persistence.*;
 import java.util.LinkedList;
 import java.util.List;
 
+/* Сущность Покупка (здесь хранятся совершенные покупки, то есть заказы клиента) используется для передачи информации из БД на сервис и наоборот */
+
 @Entity
 @Getter
 @Setter
@@ -18,8 +20,6 @@ import java.util.List;
 public class Buy extends BaseDomainEntity {
     @OneToOne(mappedBy = "buy", fetch = FetchType.LAZY)
     Client client;
-//    @OneToMany(mappedBy = "buy", fetch = FetchType.LAZY)
-//    List<BuyBook> buyBook = new LinkedList<>();
 
     @OneToMany(mappedBy = "buy" , fetch = FetchType.LAZY)
     List<Order> orderList = new LinkedList<>();

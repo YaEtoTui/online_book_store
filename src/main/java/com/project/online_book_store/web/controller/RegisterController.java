@@ -5,7 +5,7 @@ import com.project.online_book_store.app.domain.entity.Buy;
 import com.project.online_book_store.app.domain.entity.Cart;
 import com.project.online_book_store.app.domain.entity.Client;
 import com.project.online_book_store.app.domain.entity.context.AccountContext;
-import com.project.online_book_store.app.domain.entity.dto.request.RegisterForm;
+import com.project.online_book_store.app.domain.entity.dto.request.CreateRequestRegisterForm;
 import com.project.online_book_store.app.repository.AccountRepository;
 import com.project.online_book_store.app.repository.BuyRepository;
 import com.project.online_book_store.app.repository.CartRepository;
@@ -36,12 +36,12 @@ public class RegisterController {
 
     @GetMapping("signUp")
     public String openRegisterPage(Model model) {
-        model.addAttribute("registerForm", new RegisterForm());
+        model.addAttribute("registerForm", new CreateRequestRegisterForm());
         return "/register";
     }
 
     @PostMapping("/register")
-    public String register(RegisterForm registerForm) {
+    public String register(CreateRequestRegisterForm registerForm) {
         AccountContext accountContext = accountFactory.createAccountContextRegisterForm(registerForm);
         Account account = new Account(accountContext, "ROLE_USER");
         Account accountEntity = accountRepository.save(account);

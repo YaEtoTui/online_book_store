@@ -4,6 +4,8 @@ import lombok.Getter;
 
 import javax.persistence.*;
 
+/* Сущность BaseDomainEntity, в нем хранится общий id для дочерних сущностей */
+
 @Getter
 @MappedSuperclass
 public class BaseDomainEntity {

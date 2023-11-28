@@ -7,6 +7,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+/* Сущность "Книга в Корзине" используется для передачи информации из БД на сервис и наоборот */
+
 @Entity
 @Getter
 @Setter
