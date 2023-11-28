@@ -11,7 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-/* Сущность Аккаунт используется для передачи информации из БД на сервис и наоборот */
+/* Сущность Аккаунт используется для передачи информации из репозитория на сервис и наоборот */
 
 @Entity
 @Getter

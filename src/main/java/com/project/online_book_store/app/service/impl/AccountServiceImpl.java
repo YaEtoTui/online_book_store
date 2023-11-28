@@ -54,6 +54,4 @@ public class AccountServiceImpl implements AccountService {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         return accountRepository.findAccountByUsername(username);
     }
-
-
 }

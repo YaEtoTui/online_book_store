@@ -17,6 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.nio.file.Path;
 
+/* Сервис админка по созданию новых объектов или удалению их*/
+
 @Service
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor

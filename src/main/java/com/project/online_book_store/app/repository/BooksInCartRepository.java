@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/* Репозиторий "Книга в корзине", связующий сервиса и бд, где получаем необходимую сущность "Книга в корзине"*/
+
 @Repository
 public interface BooksInCartRepository extends JpaRepository<BookInCart, Long> {
 

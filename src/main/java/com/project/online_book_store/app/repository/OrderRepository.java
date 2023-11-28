@@ -6,8 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/* Репозиторий Заказ, связующий сервиса и бд, где получаем необходимую сущность Заказ*/
+
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Long> {
-
-    List<Order> findAllByBuy_Client_Id(Long clientId);
 }

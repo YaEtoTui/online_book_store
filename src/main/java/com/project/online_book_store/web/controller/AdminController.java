@@ -12,7 +12,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 /* Админка. Здесь эндпоинты для добавления новых книг, изображений для них т.д.*/
 
-
 @RestController
 @RequestMapping("/admin")
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)

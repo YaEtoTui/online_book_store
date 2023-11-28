@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/* Репозиторий "Купленная книга", связующий сервиса и бд, где получаем необходимую сущность "Купленная книга"*/
+
 @Repository
 public interface BuyBookRepository extends JpaRepository<BuyBook, Long> {
 

@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/* Здесь мы создаем, переделываем объекты, нужные для дальнейшего использования */
+
 @Component
 public class CartFactory {
 

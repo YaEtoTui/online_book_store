@@ -1,11 +1,8 @@
 package com.project.online_book_store.web.controller;
 
 import com.project.online_book_store.app.domain.entity.Account;
-import com.project.online_book_store.app.domain.entity.context.AccountContext;
 import com.project.online_book_store.app.domain.entity.dto.request.CreateRequestNewAccount;
-import com.project.online_book_store.app.repository.AccountRepository;
 import com.project.online_book_store.app.service.AccountService;
-import com.project.online_book_store.app.service.factory.AccountFactory;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -18,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 /* Контроллер для создания новых аккаунтов(Было сделано, чтобы добавить хотя бы 1 аккаунт, просто так в liquibase нельзя добавить
 *   из-за кодирования пароля
 * */
-
 
 @RestController
 @RequestMapping("/api")

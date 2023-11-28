@@ -5,6 +5,8 @@ import com.project.online_book_store.app.domain.entity.dto.response.BookWithDesc
 
 import java.util.List;
 
+/* Здесь хранится бизнес логика Сервиса Книг*/
+
 public interface BookService {
 
     List<BookResponse> getBooks();

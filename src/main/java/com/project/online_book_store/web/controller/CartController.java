@@ -19,7 +19,6 @@ import java.util.List;
 
 /* Контроллер для перехода на страницу "Корзина"(это верхняя правая иконка). Здесь эндпоинты: удалить книгу, оформить заказ*/
 
-
 @Controller
 @RequestMapping("/user")
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)

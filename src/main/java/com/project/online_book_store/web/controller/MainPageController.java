@@ -18,7 +18,6 @@ import java.util.List;
 
 /* Контроллер для перехода на страницу "Главная", где отображаются все книги */
 
-
 @Controller
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
@@ -36,6 +35,7 @@ public class MainPageController {
     public String getMainPage(Model model){
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         Account account = accountRepository.findAccountByUsername(username);
+
         if (account != null) {
             model.addAttribute("isAuthenticated", false);
             model.addAttribute("countBooks", account.getClient().getCart().getBookInCartList().size());
@@ -50,6 +50,7 @@ public class MainPageController {
     public String getBookDescription(@PathVariable("bookId") Long bookId, Model model) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         Account account = accountRepository.findAccountByUsername(username);
+
         if (account != null) {
             model.addAttribute("isAuthenticated", false);
             model.addAttribute("countBooks", account.getClient().getCart().getBookInCartList().size());

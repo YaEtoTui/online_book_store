@@ -24,6 +24,8 @@ import java.io.FileOutputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+/* Здесь мы создаем, переделываем объекты, нужные для дальнейшего использования */
+
 @Component
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor

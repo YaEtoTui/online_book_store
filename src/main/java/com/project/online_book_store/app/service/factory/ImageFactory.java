@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-/* Здесь ищем путь изображений */
+/* Здесь мы создаем, переделываем объекты, нужные для дальнейшего использования */
 
 @Component
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)

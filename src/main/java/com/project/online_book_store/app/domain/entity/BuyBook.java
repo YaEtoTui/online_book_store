@@ -10,7 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-/* Сущность "Купленная книга" используется для передачи информации из БД на сервис и наоборот */
+/* Сущность "Купленная книга" используется для передачи информации из репозитория на сервис и наоборот */
 
 @Entity
 @Getter

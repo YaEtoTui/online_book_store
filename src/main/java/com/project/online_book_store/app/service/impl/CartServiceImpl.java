@@ -3,22 +3,21 @@ package com.project.online_book_store.app.service.impl;
 import com.project.online_book_store.app.domain.entity.Account;
 import com.project.online_book_store.app.domain.entity.Book;
 import com.project.online_book_store.app.domain.entity.BookInCart;
-import com.project.online_book_store.app.domain.entity.Cart;
-import com.project.online_book_store.app.domain.entity.dto.response.BookResponse;
 import com.project.online_book_store.app.repository.AccountRepository;
 import com.project.online_book_store.app.repository.BookRepository;
 import com.project.online_book_store.app.repository.BooksInCartRepository;
 import com.project.online_book_store.app.repository.CartRepository;
 import com.project.online_book_store.app.service.CartService;
-import com.project.online_book_store.app.service.factory.CartFactory;
-import javax.transaction.Transactional;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
+
+/* Сервис по корзине*/
 
 @Service
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -27,14 +26,12 @@ import java.util.List;
 public class CartServiceImpl implements CartService {
 
     BooksInCartRepository booksInCartRepository;
-    CartRepository cartRepository;
     BookRepository bookRepository;
     AccountRepository accountRepository;
 
     @Override
     public List<BookInCart> showBooks() {
-        List<BookInCart> bookInCartList = booksInCartRepository.findAll();
-        return bookInCartList;
+        return booksInCartRepository.findAll();
     }
 
     @Override
@@ -43,7 +40,7 @@ public class CartServiceImpl implements CartService {
         Account account = accountRepository.findAccountByUsername(username);
 
         Book book = bookRepository.getReferenceById(bookId);
-        if (booksInCartRepository.findBookInCartsByBookAndCart_Id(book, account.getClient().getCart().getId()) != null) { // поменять после auth
+        if (booksInCartRepository.findBookInCartsByBookAndCart_Id(book, account.getClient().getCart().getId()) != null) {
             BookInCart bookInCart = new BookInCart(book, account.getClient().getCart());
             booksInCartRepository.save(bookInCart);
         }
