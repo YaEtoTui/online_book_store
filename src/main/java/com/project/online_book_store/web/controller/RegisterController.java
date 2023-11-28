@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
+
 /* Контроллер для перехода на страницу "Регистрация"*/
 
 @Controller
@@ -41,7 +43,7 @@ public class RegisterController {
     }
 
     @PostMapping("/register")
-    public String register(CreateRequestRegisterForm registerForm) {
+    public String register(@Valid CreateRequestRegisterForm registerForm) {
         AccountContext accountContext = accountFactory.createAccountContextRegisterForm(registerForm);
         Account account = new Account(accountContext, "ROLE_USER");
         Account accountEntity = accountRepository.save(account);
