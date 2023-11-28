@@ -15,6 +15,6 @@ public class NotFoundAdvice {
 
     @ExceptionHandler({NotFoundAuthorException.class, NotFoundBookException.class, NotFoundGenreException.class})
     public ResponseEntity<String> notFound(Exception exception) {
-        return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(exception.getMessage(), HttpStatus.OK);
     }
 }
