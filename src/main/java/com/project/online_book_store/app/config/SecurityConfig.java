@@ -30,10 +30,15 @@ public class SecurityConfig {
     protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/user/**")
-                .hasAnyRole("ADMIN", "USER")
                 .antMatchers("/admin/**")
                 .hasAnyRole("ADMIN")
+                .and()
+                .httpBasic();
+
+        http.cors().and().csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/user/**")
+                .hasAnyRole("ADMIN", "USER")
                 .anyRequest().permitAll()
                 .and()
                 .formLogin(form -> form
