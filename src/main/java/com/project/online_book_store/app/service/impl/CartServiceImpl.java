@@ -29,23 +29,28 @@ public class CartServiceImpl implements CartService {
     BookRepository bookRepository;
     AccountRepository accountRepository;
 
+    //Получаем список книг, которые находятся в корзине
     @Override
     public List<BookInCart> showBooks() {
         return booksInCartRepository.findAll();
     }
 
+    //Метод добавления книги в корзину по его id
     @Override
     public void addBookInCart(Long bookId) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         Account account = accountRepository.findAccountByUsername(username);
-
         Book book = bookRepository.getReferenceById(bookId);
-        if (booksInCartRepository.findBookInCartsByBookAndCart_Id(book, account.getClient().getCart().getId()) != null) {
+
+        List<BookInCart> bookInCartList = booksInCartRepository.findBookInCartsByBookAndCart_Id(book, account.getClient().getCart().getId());
+
+        if (bookInCartList.isEmpty()) {
             BookInCart bookInCart = new BookInCart(book, account.getClient().getCart());
             booksInCartRepository.save(bookInCart);
         }
     }
 
+    //Метод удаления книги из корзины по его id
     @Override
     public void deleteBookInCart(Long bookId) {
         BookInCart bookInCart = booksInCartRepository.getReferenceById(bookId);

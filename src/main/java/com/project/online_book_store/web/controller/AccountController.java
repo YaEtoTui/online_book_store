@@ -24,12 +24,14 @@ public class AccountController {
 
     AccountService accountService;
 
+    //Эндпоинт создания нового пользователя с ролью User
     @PostMapping("/new/account")
     public ResponseEntity<Account> addNewUserAccount(@RequestBody CreateRequestNewAccount account) {
         return ResponseEntity.ok()
                 .body(accountService.addNewUserAccount(account));
     }
 
+    //Эндпоинт создания нового пользователя с ролью Admin
     @PostMapping("/new/admin/account")
     public ResponseEntity<Account> addNewAdminAccount(@RequestBody CreateRequestNewAccount account) {
         return ResponseEntity.ok()

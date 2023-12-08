@@ -24,6 +24,7 @@ public class BuyServiceImpl implements BuyService {
     ClientRepository clientRepository;
     AccountRepository accountRepository;
 
+    //Ищет Покупку по клиенту
     @Override
     public Buy searchBuyByClient() {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();

@@ -36,14 +36,17 @@ public class RegisterController {
     ClientRepository clientRepository;
     AccountFactory accountFactory;
 
+    //Эндпоинт выводит html-страницу register
     @GetMapping("signUp")
     public String openRegisterPage(Model model) {
         model.addAttribute("registerForm", new CreateRequestRegisterForm());
         return "/register";
     }
 
+    //Эндпоинт обработки Объекта CreateRequestRegisterForm
     @PostMapping("/register")
     public String register(@Valid CreateRequestRegisterForm registerForm) {
+
         AccountContext accountContext = accountFactory.createAccountContextRegisterForm(registerForm);
         Account account = new Account(accountContext, "ROLE_USER");
         Account accountEntity = accountRepository.save(account);

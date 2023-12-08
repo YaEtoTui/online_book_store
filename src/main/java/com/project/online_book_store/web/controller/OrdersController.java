@@ -30,7 +30,7 @@ public class OrdersController {
     AccountRepository accountRepository;
     OrderRepository orderRepository;
 
-
+    //Эндпоинт выводит html-страницу orders
     @GetMapping("/orders")
     public String getOrdersPage(Model model) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -47,6 +47,7 @@ public class OrdersController {
         return "orders";
     }
 
+    //Эндпоинт получения Страницы order по id книги
     @GetMapping("/orders/order/{id}")
     public String getOrderDescPage(@PathVariable Long id, Model model) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();

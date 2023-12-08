@@ -29,12 +29,14 @@ public class AdminServiceImpl implements AdminService {
     BookRepository bookRepository;
     BookFactory bookFactory;
 
+    //Загружаем изображение(Админка)
     @Override
     public BookResponse uploadImage(Long imageId, MultipartFile image) {
         Path pathImage = adminFactory.addImageInFileSystem(image);
         return adminFactory.saveInDBPath(imageId, pathImage);
     }
 
+    //Добавляем новую книгу(Админка)
     @Override
     public BookResponse addNewBook(CreateRequestBook createRequestBook) {
         BookContext bookContext = adminFactory.createBookContext(createRequestBook);
@@ -43,6 +45,7 @@ public class AdminServiceImpl implements AdminService {
         return bookFactory.createBookResponse(bookEntity);
     }
 
+    //Удаляем полностью книгу из БД(Админка)
     @Override
     public BookResponse deleteBook(Long bookId) {
         Book book = bookRepository.getReferenceById(bookId);

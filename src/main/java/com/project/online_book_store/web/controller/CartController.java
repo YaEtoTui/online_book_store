@@ -29,6 +29,7 @@ public class CartController {
     OrdersService ordersService;
     AccountService accountService;
 
+    //Эндпоинт выводит html-страницу Корзины
     @GetMapping("/cart")
     public String getCartPage(Model model){
 
@@ -48,6 +49,7 @@ public class CartController {
         return "cart";
     }
 
+    //Эндпоинт добавления книги в корзину
     @PostMapping("/bookInCart/{bookId}")
     public String addBookInCart(@PathVariable Long bookId) {
         cartService.addBookInCart(bookId);
@@ -55,6 +57,7 @@ public class CartController {
         return "redirect:/api/";
     }
 
+    //Эндпоинт удаления книги из корзины
     @PostMapping("/deleteBookInCart/{bookInCartId}")
     public String deleteBookInCart(@PathVariable Long bookInCartId) {
         cartService.deleteBookInCart(bookInCartId);
@@ -62,6 +65,7 @@ public class CartController {
         return "redirect:/user/cart";
     }
 
+    //Эндпоинт создания заказа
     @PostMapping("/buy/createOrder/{cartId}")
     public String createOrder(@PathVariable Long cartId) {
         ordersService.createOrder(cartId);

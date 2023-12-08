@@ -25,6 +25,7 @@ public class AccountServiceImpl implements AccountService {
     AccountRepository accountRepository;
     AccountFactory accountFactory;
 
+    //Добавляет новый Аккаунт с ролью User
     @Override
     public Account addNewUserAccount(CreateRequestNewAccount account) {
         AccountContext accountContextUser = accountFactory.createAccountContext(account);
@@ -32,6 +33,7 @@ public class AccountServiceImpl implements AccountService {
         return accountRepository.save(accountEntity);
     }
 
+    //Добавляет новый Аккаунт с ролью Admin
     @Override
     public Account addNewAdminAccount(CreateRequestNewAccount account) {
         AccountContext accountContextAdmin = accountFactory.createAccountContext(account);
@@ -39,6 +41,7 @@ public class AccountServiceImpl implements AccountService {
         return accountRepository.save(accountEntity);
     }
 
+    //Проверяем, что пользователь аутентифицирован
     @Override
     public Boolean isAuthenticated() {
 
@@ -49,6 +52,7 @@ public class AccountServiceImpl implements AccountService {
         }
     }
 
+    //Получаем Аккаунт
     @Override
     public Account getAccount() {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();

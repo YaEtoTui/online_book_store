@@ -31,6 +31,7 @@ public class MainPageController {
         return bookService.getBooks();
     }
 
+    //Эндпоинт выводит html-страницу Main
     @GetMapping({"/", "/api"})
     public String getMainPage(Model model){
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -46,6 +47,7 @@ public class MainPageController {
         return "main";
     }
 
+    //Эндпоинт получения страницы со списком книг и описанием каждой
     @GetMapping("/api/book/desc/{bookId}")
     public String getBookDescription(@PathVariable("bookId") Long bookId, Model model) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();

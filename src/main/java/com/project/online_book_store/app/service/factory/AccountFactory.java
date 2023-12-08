@@ -17,6 +17,7 @@ import org.springframework.stereotype.Component;
 public class AccountFactory {
     PasswordEncoder passwordEncoder;
 
+    //Переделываем объект из класса CreateRequestNewAccount в AccountContext
     public AccountContext createAccountContext(CreateRequestNewAccount requestNewAccount) {
         return new AccountContext(
                 requestNewAccount.getUsername(),
@@ -24,6 +25,7 @@ public class AccountFactory {
         );
     }
 
+    //Переделываем объект из класса CreateRequestRegisterForm в AccountContext
     public AccountContext createAccountContextRegisterForm(CreateRequestRegisterForm registerForm) {
         return new AccountContext(
                 registerForm.getUsername(),

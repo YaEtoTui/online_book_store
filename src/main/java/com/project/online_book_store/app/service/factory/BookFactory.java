@@ -14,12 +14,14 @@ import java.util.stream.Collectors;
 @Component
 public class BookFactory {
 
+    //Переделываем список объектов класса Book в список BookResponse
     public List<BookResponse> createListBookResponse(List<Book> bookList) {
         return bookList.stream()
                 .map(this::createBookResponse)
                 .collect(Collectors.toList());
     }
 
+    //Переделываем объект класса Book в BookResponse
     public BookResponse createBookResponse(Book book) {
         return new BookResponse(
                 book.getId(),
@@ -32,12 +34,14 @@ public class BookFactory {
         );
     }
 
+    //Создаем Класс AuthorInfo
     private BookResponse.AuthorInfo createAuthorInfo(Author author) {
         return new BookResponse.AuthorInfo(
                 author.getNameAuthor()
         );
     }
 
+    //Переделываем объект класса Book в BookWithDescriptionResponse
     public BookWithDescriptionResponse createBookWithDescriptionResponse(Book book) {
         return new BookWithDescriptionResponse(
                 book.getId(),

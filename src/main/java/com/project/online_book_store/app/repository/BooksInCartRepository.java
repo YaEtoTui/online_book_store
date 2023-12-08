@@ -15,4 +15,6 @@ public interface BooksInCartRepository extends JpaRepository<BookInCart, Long> {
 
     List<BookInCart> findBookInCartsByBookAndCart_Id(Book book, Long cartId);
     BookInCart findBookInCartByBookAndCart(Book book, Cart cart);
+
+    List<BookInCart> findAllByBookId(Long bookId);
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 public class LogInController {
 
+    //Эндпоинт выводит html-страницу Login
     @GetMapping("/login")
     public String openLoginPage() {
         return "/login";

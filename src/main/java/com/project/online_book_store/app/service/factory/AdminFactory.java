@@ -36,6 +36,7 @@ public class AdminFactory {
     AuthorRepository authorRepository;
     GenreRepository genreRepository;
 
+    //Добавляем Изображение в проект и возвращаем путь до него
     @SneakyThrows
     public Path addImageInFileSystem(MultipartFile image) {
         Path path = Paths.get("src\\main\\resources\\images\\" + image.getOriginalFilename()).toAbsolutePath();
@@ -51,6 +52,7 @@ public class AdminFactory {
         return path;
     }
 
+    //Сохраняем путь изображения в базе данных
     public BookResponse saveInDBPath(Long id, Path pathImage) {
         Book book = bookRepository.findById(id)
                 .orElseThrow(() -> new NotFoundBookException(
@@ -65,6 +67,7 @@ public class AdminFactory {
         return bookFactory.createBookResponse(bookEntity);
     }
 
+    //Переделываем объект из класса CreateRequestBook в BookContext
     public BookContext createBookContext(CreateRequestBook createRequestBook) {
 
         Author author = authorRepository.findById(createRequestBook.getAuthorId())

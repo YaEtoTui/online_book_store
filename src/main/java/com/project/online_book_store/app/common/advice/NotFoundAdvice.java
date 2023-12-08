@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class NotFoundAdvice {
 
+    //Ловит ошибки NotFoundAuthorException, NotFoundBookException и NotFoundGenreException и возвращает сообщение
     @ExceptionHandler({NotFoundAuthorException.class, NotFoundBookException.class, NotFoundGenreException.class})
     public ResponseEntity<String> notFound(Exception exception) {
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.OK);

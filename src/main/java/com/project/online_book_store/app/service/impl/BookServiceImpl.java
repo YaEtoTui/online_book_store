@@ -25,12 +25,14 @@ public class BookServiceImpl implements BookService {
     BookRepository bookRepository;
     BookFactory bookFactory;
 
-
+    //Получаем список всех книг
+    @Override
     public List<BookResponse> getBooks() {
         List<Book> bookList = bookRepository.findAll();
         return bookFactory.createListBookResponse(bookList);
     }
 
+    // Получаем книгу по его id
     @Override
     public BookWithDescriptionResponse getBookById(Long bookId) {
         Book book = bookRepository.getReferenceById(bookId);

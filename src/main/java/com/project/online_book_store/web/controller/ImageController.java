@@ -24,6 +24,7 @@ public class ImageController {
 
     ImageService imageService;
 
+    //Эндпоинт загрузки изображения по id купленной книги
     @GetMapping("/image/buyBook/{id}")
     @SneakyThrows
     public ResponseEntity<?> uploadImageBuyBook(@PathVariable("id") Long id) {
@@ -32,6 +33,7 @@ public class ImageController {
                 .body(imageService.getImageBuyBook(id));
     }
 
+    //Эндпоинт загрузки изображения по id книги
     @GetMapping("/image/{id}")
     @SneakyThrows
     public ResponseEntity<?> uploadImageBook(@PathVariable("id") Long id) {

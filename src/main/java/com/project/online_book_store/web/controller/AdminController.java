@@ -20,18 +20,21 @@ public class AdminController {
 
     AdminService adminService;
 
+    //Эндпоинт загрузки изображения в БД по id книги
     @PostMapping("/uploadImage/image/{imageId}")
     public ResponseEntity<BookResponse> uploadImage(@PathVariable("imageId") Long imageId, @RequestParam MultipartFile image) {
         return ResponseEntity.ok()
                 .body(adminService.uploadImage(imageId, image));
     }
 
+    //Эндпоинт добавления новой книги
     @PostMapping("/request/book")
     public ResponseEntity<BookResponse> addNewBook(@RequestBody CreateRequestBook createRequestBook) {
         return ResponseEntity.ok()
                 .body(adminService.addNewBook(createRequestBook));
     }
 
+    //Эндпоинт удаления книги по его id
     @DeleteMapping("/request/delete/{bookId}")
     public ResponseEntity<BookResponse> deleteBook(@PathVariable("bookId") Long bookId) {
         return ResponseEntity.ok()

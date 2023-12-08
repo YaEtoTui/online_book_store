@@ -13,12 +13,14 @@ import java.util.stream.Collectors;
 @Component
 public class CartFactory {
 
+    //Переделываем список объектов класса BookInCart в список BookResponse
     public List<BookResponse> createBookListResponse(List<BookInCart> bookInCartList) {
         return bookInCartList.stream()
                 .map(this::createBookResponse)
                 .collect(Collectors.toList());
     }
 
+    //Переделываем объект класса BookInCart в BookResponse
     private BookResponse createBookResponse(BookInCart book) {
         return new BookResponse(
                 book.getBook().getId(),
@@ -31,6 +33,7 @@ public class CartFactory {
         );
     }
 
+    //Создаем Класс AuthorInfo
     private BookResponse.AuthorInfo createAuthorInfo(Author author) {
         return new BookResponse.AuthorInfo(
                 author.getNameAuthor()

@@ -21,12 +21,14 @@ public class ImageServiceImpl implements ImageService {
 
     ImageFactory imageFactory;
 
+    //Метод получает UrlResource для вывода изображения по id купленной книги
     @Override
     @SneakyThrows
     public UrlResource getImageBuyBook(Long buyBookId) {
         return new UrlResource(imageFactory.checkImagePathWithBuyBook(buyBookId).toUri());
     }
 
+    //Метод получает UrlResource для вывода изображения по id книги
     @Override
     @SneakyThrows
     public UrlResource getImageBook(Long bookId) {

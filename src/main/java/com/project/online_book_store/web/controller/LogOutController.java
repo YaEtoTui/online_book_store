@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/api")
 public class LogOutController {
 
+    //Эндпоинт выводит html-страницу Logout
     @PostMapping("/logout")
     public String openLoginPage() {
         return "redirect:/api/";

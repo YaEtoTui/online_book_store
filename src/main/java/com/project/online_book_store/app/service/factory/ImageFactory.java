@@ -23,6 +23,7 @@ public class ImageFactory {
     BuyBookRepository buyBookRepository;
     BookRepository bookRepository;
 
+    //Проверяем, что путь до изображения есть в БД для вывода самого изображения
     public Path checkImagePathWithBuyBook(Long buyBookId) {
         BuyBook book = buyBookRepository.findById(buyBookId)
                 .orElseThrow(() -> new NotFoundBookException(
@@ -32,6 +33,7 @@ public class ImageFactory {
         return Paths.get(book.getPathImage());
     }
 
+    //Проверяем, что путь до изображения есть в БД для вывода самого изображения
     public Path checkImagePathWithBook(Long bookId) {
         Book book = bookRepository.findById(bookId)
                 .orElseThrow(() -> new NotFoundBookException(

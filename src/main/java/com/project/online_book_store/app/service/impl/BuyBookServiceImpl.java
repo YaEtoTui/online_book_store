@@ -21,6 +21,7 @@ public class BuyBookServiceImpl implements BuyBookService {
 
     BuyBookRepository buyBookRepository;
 
+    //Получает полный список купленных книг
     @Override
     public List<BuyBook> getListBuyBooks() {
         return buyBookRepository.findAll();
