@@ -10,6 +10,7 @@ import com.project.online_book_store.app.repository.AccountRepository;
 import com.project.online_book_store.app.repository.BuyRepository;
 import com.project.online_book_store.app.repository.CartRepository;
 import com.project.online_book_store.app.repository.ClientRepository;
+import com.project.online_book_store.app.service.RegisterService;
 import com.project.online_book_store.app.service.factory.AccountFactory;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -30,11 +31,7 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 public class RegisterController {
 
-    AccountRepository accountRepository;
-    CartRepository cartRepository;
-    BuyRepository buyRepository;
-    ClientRepository clientRepository;
-    AccountFactory accountFactory;
+    RegisterService registerService;
 
     //Эндпоинт выводит html-страницу register
     @GetMapping("signUp")
@@ -46,32 +43,7 @@ public class RegisterController {
     //Эндпоинт обработки Объекта CreateRequestRegisterForm
     @PostMapping("/register")
     public String register(@Valid CreateRequestRegisterForm registerForm) {
-
-        AccountContext accountContext = accountFactory.createAccountContextRegisterForm(registerForm);
-        Account account = new Account(accountContext, "ROLE_USER");
-        Account accountEntity = accountRepository.save(account);
-
-        Cart cart = new Cart();
-        Cart cartEntity = cartRepository.save(cart);
-
-
-        Buy buy = new Buy();
-        Buy buyEntity = buyRepository.save(buy);
-
-        if(cartEntity != null && accountEntity != null && buyEntity != null) {
-            Client client = new Client(
-                    registerForm.getName(),
-                    registerForm.getEmail(),
-                    buyEntity,
-                    cartEntity,
-                    accountEntity
-                    );
-            Client clientEntity = clientRepository.save(client);
-            if (clientEntity != null) {
-                System.out.println("Клиент создался");
-            }
-        }
-
+        registerService.register(registerForm);
         return "redirect:/api/";
     }
 }
