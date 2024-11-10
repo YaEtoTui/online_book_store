@@ -25,13 +25,13 @@ public class ImageServiceImpl implements ImageService {
     @Override
     @SneakyThrows
     public UrlResource getImageBuyBook(Long buyBookId) {
-        return new UrlResource(imageFactory.checkImagePathWithBuyBook(buyBookId).toUri());
+        return new UrlResource(imageFactory.checkImagePathWithBuyBook(buyBookId));
     }
 
     //Метод получает UrlResource для вывода изображения по id книги
     @Override
     @SneakyThrows
     public UrlResource getImageBook(Long bookId) {
-        return new UrlResource(imageFactory.checkImagePathWithBook(bookId).toUri());
+        return new UrlResource(imageFactory.checkImagePathWithBook(bookId));
     }
 }

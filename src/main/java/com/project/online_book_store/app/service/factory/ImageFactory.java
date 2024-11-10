@@ -24,22 +24,22 @@ public class ImageFactory {
     BookRepository bookRepository;
 
     //Проверяем, что путь до изображения есть в БД для вывода самого изображения
-    public Path checkImagePathWithBuyBook(Long buyBookId) {
+    public String checkImagePathWithBuyBook(Long buyBookId) {
         BuyBook book = buyBookRepository.findById(buyBookId)
                 .orElseThrow(() -> new NotFoundBookException(
                                 String.format("Not found id '%s' book", buyBookId)
                         )
                 );
-        return Paths.get(book.getPathImage());
+        return book.getPathImage();
     }
 
     //Проверяем, что путь до изображения есть в БД для вывода самого изображения
-    public Path checkImagePathWithBook(Long bookId) {
+    public String checkImagePathWithBook(Long bookId) {
         Book book = bookRepository.findById(bookId)
                 .orElseThrow(() -> new NotFoundBookException(
                                 String.format("Not found id '%s' book", bookId)
                         )
                 );
-        return Paths.get(book.getPathImage());
+        return book.getPathImage();
     }
 }
